@@ -1,0 +1,8 @@
+# neovim plugins
+/config/nvim/plugged
+
+# mundo undo list
+/config/nvim/undo
+
+# saved sessions
+/config/nvim/session
