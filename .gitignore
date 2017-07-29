@@ -6,3 +6,7 @@
 
 # saved sessions
 /config/nvim/session
+
+#misc
+.netrwbook
+.netrwhist
