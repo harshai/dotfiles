@@ -1,15 +1,38 @@
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
 [user]
-	name = Harsha Ivaturi
-	email = harsha.ivaturi@gmail.com
-	signingKey = 9C322AEEFEC3E918
+    name = Harsha Ivaturi
+    email = harsha.ivaturi@gmail.com
+    signingKey = 9C322AEEFEC3E918
+
 [push]
-	default = simple
+    default = simple
+
 [core]
-	excludesfile = /Users/Harsha/.gitignore_global
+    excludesfile = /Users/Harsha/.gitignore_global
+
 [commit]
-	gpgsign = true
+    gpgsign = true
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
