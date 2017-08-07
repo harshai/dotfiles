@@ -57,6 +57,7 @@ alias 'ldot=exa -ld .*'
 alias 'lS=exa -1FSsh'
 alias 'lart=exa -1Fcart'
 alias 'lrt=exa -1Fcrt'
+alias 'ls=exa'
 alias 'zshrc=$EDITOR ~/.zshrc'
 alias 'h=history'
 # -------------------------------------------------------------------
