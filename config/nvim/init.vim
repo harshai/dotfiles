@@ -354,8 +354,11 @@ set autoread
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f2)
+" Move to word
+map  <Leader>l <Plug>(easymotion-bd-w)
+nmap <Leader>l <Plug>(easymotion-overwin-w))
 
-"" Split
+" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
