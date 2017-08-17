@@ -1,5 +1,8 @@
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
@@ -15,5 +18,6 @@
     ~/.config/iterm:
         path: config/iterm/
         create: true
+
 - brewfile:
     file: Brewfile
