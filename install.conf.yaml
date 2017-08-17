@@ -21,3 +21,7 @@
 
 - brewfile:
     file: Brewfile
+
+- shell:
+    - [sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)", Install oh-my-zsh]
+    - [chsh -s /bin/zsh, Setting zsh as default shell]
