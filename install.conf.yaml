@@ -15,3 +15,5 @@
     ~/.config/iterm:
         path: config/iterm/
         create: true
+- brewfile:
+    file: Brewfile
