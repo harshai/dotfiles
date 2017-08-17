@@ -7,6 +7,7 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
+    ~/.gitconfig_local: gitconfig_local
     ~/.ssh/config:
         path: ssh/config
         create: true

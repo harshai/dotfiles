@@ -46,7 +46,7 @@
     difff = !git --no-pager diff
 
 [gpg]
-	program = gpg1
+    program = gpg1
 
 [include]
-    path = /gitconfig_local
+    path = .gitconfig_local
