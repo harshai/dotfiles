@@ -7,7 +7,7 @@
 [user]
     name = Harsha Ivaturi
     email = harsha.ivaturi@gmail.com
-    signingKey = 9C322AEEFEC3E918
+	signingkey = 142F2A1B
 
 [push]
     default = simple
@@ -50,3 +50,5 @@
     patch = !git --no-pager diff --no-color
     difff = !git --no-pager diff
 
+[gpg]
+	program = gpg2
