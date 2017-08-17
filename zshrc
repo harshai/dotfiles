@@ -152,11 +152,11 @@ function nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2="";1') 
 
 # myIP address
 function myip() {
-    ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
-	ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+  ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
 #
@@ -187,12 +187,12 @@ cache_file="$ZSH_CACHE_DIR/last-working-dir"
 chpwd_functions+=(chpwd_last_working_dir)
 function chpwd_last_working_dir() {
   # Use >| in case noclobber is set to avoid "file exists" error
-	pwd >| "$cache_file"
+  pwd >| "$cache_file"
 }
 
 # Changes directory to the last working directory.
 function lwd() {
-	[[ ! -r "$cache_file" ]] || cd "`cat "$cache_file"`"
+  [[ ! -r "$cache_file" ]] || cd "`cat "$cache_file"`"
 }
 
 export DOCKER_HOST=tcp://192.168.99.100:2376
