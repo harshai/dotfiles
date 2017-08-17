@@ -10,3 +10,6 @@
 #misc
 .netrwbook
 .netrwhist
+
+# local config
+gitconfig_local

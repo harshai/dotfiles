@@ -4,11 +4,6 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
 
-[user]
-    name = Harsha Ivaturi
-    email = harsha.ivaturi@gmail.com
-	signingkey = 142F2A1B
-
 [push]
     default = simple
 
@@ -51,4 +46,7 @@
     difff = !git --no-pager diff
 
 [gpg]
-	program = gpg2
+	program = gpg1
+
+[include]
+    path = /gitconfig_local

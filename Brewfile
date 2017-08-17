@@ -18,6 +18,7 @@ brew "elixir"
 brew "python"
 brew "node"
 brew "ruby"
+brew "elm"
 brew 'exercism'
 
 # Databases
