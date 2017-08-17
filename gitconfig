@@ -19,7 +19,7 @@
     gpgsign = true
 
 [color]
-    ui = true
+    ui = auto
 
 [color "branch"]
     current = yellow reverse
@@ -33,6 +33,6 @@
     new = green bold
 
 [color "status"]
-    added = yellow
-    changed = green
+    added = green
+    changed = yellow
     untracked = red
