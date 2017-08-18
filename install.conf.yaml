@@ -22,6 +22,7 @@
 
 - brewfile:
     file: Brewfile
+    no-upgrade: true
 
 - shell:
     - [echo 'chsh -s /bin/zsh, To set zsh as default shell']
