@@ -8,6 +8,7 @@
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.gitconfig_local: gitconfig_local
+    ~/.mackup.cfg: mackup
     ~/.ssh/config:
         path: ssh/config
         create: true
@@ -25,4 +26,5 @@
     no-upgrade: true
 
 - shell:
+    - [mackup restore, Restore App settings using mackup]
     - [echo 'chsh -s /bin/zsh, To set zsh as default shell']

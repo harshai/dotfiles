@@ -12,6 +12,7 @@ tap "neovim/neovim"
 cask 'font-fira-code'
 cask 'font-mononoki'
 cask 'font-inconsolata'
+cask 'font-fantasque-sans-mono'
 
 # Languages
 brew "elixir"
@@ -42,6 +43,7 @@ brew "the_silver_searcher"
 brew "fzf"
 brew "exa"
 brew 'mas'
+brew 'mackup'
 
 # Applications
 cask '1password'
