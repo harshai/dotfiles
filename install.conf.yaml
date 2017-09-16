@@ -21,10 +21,14 @@
         path: config/iterm/
         create: true
 
-- brewfile:
-    file: Brewfile
-    no-upgrade: true
-
 - shell:
-    - [mackup restore, Restore App settings using mackup]
+    -
+      command: brew bundle install
+      stdout: true
+      description: Installing dependencies from Brew file
+    -
+      command: mackup restore
+      stdout: true
+      stdin: true
+      description: Restoring App configs using mackup
     - [echo 'chsh -s /bin/zsh, To set zsh as default shell']
