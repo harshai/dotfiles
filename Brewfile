@@ -30,6 +30,7 @@ brew "mongodb", restart_service: true
 brew "redis", restart_service: true
 
 # Utils
+brew "nvm"
 brew "git"
 brew "git-extras"
 brew 'diff-so-fancy'
