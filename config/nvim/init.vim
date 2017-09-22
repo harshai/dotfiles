@@ -53,6 +53,8 @@ Plug 'mklabs/split-term.vim'
 Plug 'mru.vim'
 Plug 'simnalamburt/vim-mundo'
 Plug 'elmcast/elm-vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
