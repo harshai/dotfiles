@@ -416,7 +416,7 @@
 	<key>HotKeyTogglesWindow</key>
 	<false/>
 	<key>Hotkey</key>
-	<true/>
+	<false/>
 	<key>HotkeyChar</key>
 	<integer>32</integer>
 	<key>HotkeyCode</key>
@@ -492,17 +492,21 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>454 555 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 588 620 392 0 0 1920 1177 </string>
+	<string>1850 252 620 392 1440 -1356 1440 2537 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>347 38 606 469 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>525 704 796 473 0 0 1920 1177 </string>
+	<string>741 704 796 473 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>1440 -1356 1440 2560 1440 -1356 1440 2537 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 350 810 677 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>-15 2166 650 426 -338 1200 2560 1417 </string>
+	<key>NeverWarnAboutOverrides</key>
+	<true/>
+	<key>NeverWarnAboutOverrides_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -759,10 +763,36 @@
 			</dict>
 			<key>Guid</key>
 			<string>BD60D9A3-F1D1-4B7B-B76E-E820C393DC1F</string>
+			<key>Has Hotkey</key>
+			<true/>
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
 			<real>0.98879894578313254</real>
+			<key>HotKey Activated By Modifier</key>
+			<false/>
+			<key>HotKey Alternate Shortcuts</key>
+			<array/>
+			<key>HotKey Characters</key>
+			<string> </string>
+			<key>HotKey Characters Ignoring Modifiers</key>
+			<string> </string>
+			<key>HotKey Key Code</key>
+			<integer>49</integer>
+			<key>HotKey Modifier Activation</key>
+			<integer>0</integer>
+			<key>HotKey Modifier Flags</key>
+			<integer>262144</integer>
+			<key>HotKey Window Animates</key>
+			<true/>
+			<key>HotKey Window AutoHides</key>
+			<true/>
+			<key>HotKey Window Dock Click Action</key>
+			<integer>0</integer>
+			<key>HotKey Window Floats</key>
+			<true/>
+			<key>HotKey Window Reopens On Activation</key>
+			<false/>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -838,6 +868,38 @@
 					<integer>35</integer>
 					<key>Text</key>
 					<string>/usr/local/bin/sudolikeaboss</string>
+				</dict>
+				<key>0x68-0x140000</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Text</key>
+					<string>Move Divider Left
+Resize Split Pane.Move Divider Left</string>
+				</dict>
+				<key>0x6a-0x140000</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Text</key>
+					<string>Move Divider Down
+Resize Split Pane.Move Divider Down</string>
+				</dict>
+				<key>0x6b-0x140000</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Text</key>
+					<string>Move Divider Up
+Resize Split Pane.Move Divider Up</string>
+				</dict>
+				<key>0x6c-0x140000</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Text</key>
+					<string>Move Divider Right
+Resize Split Pane.Move Divider Right</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -1274,7 +1336,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>DF76A99B-8C4F-400D-A9BA-C4939FECDEA8</string>
 	<key>NoSyncLastTipTime</key>
-	<real>527078028.11093497</real>
+	<real>527740287.790672</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1366,6 +1428,7 @@
 		<string>0066</string>
 		<string>0067</string>
 		<string>0068</string>
+		<string>0069</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1382,6 +1445,8 @@
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
+	<false/>
+	<key>PerformDNSLookups</key>
 	<false/>
 	<key>PointerActions</key>
 	<dict>
