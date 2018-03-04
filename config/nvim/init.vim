@@ -45,6 +45,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-rhubarb'
 
 " Not part of vim bootstrap
 Plug 'rizzatti/dash.vim'
@@ -55,6 +56,7 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -178,10 +180,11 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
-
+set mouse=a
 let no_buffers_menu=1
 set background=dark
 colorscheme gruvbox
+set inccommand=nosplit
 
 set mousemodel=popup
 set t_Co=256
