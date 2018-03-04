@@ -186,6 +186,7 @@ set background=dark
 colorscheme gruvbox
 set inccommand=nosplit
 
+set mouse=a
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -399,6 +400,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 "" Map escape
 imap jj <Esc>
+imap jk <Esc>
 
 "" Easy Motion
 let g:EasyMotion_smartcase = 1
@@ -566,7 +568,10 @@ vnoremap <leader>rem  :RExtractMethod<cr>
 if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
-
+"" Open vimrc from anywhere
+map <leader>vimrc :tabe $MYVIMRC<cr>
+"" auto source vimrc on close
+autocmd bufwritepost .vimrc source $MYVIMRC
 "*****************************************************************************
 "" Convenience variables
 "*****************************************************************************

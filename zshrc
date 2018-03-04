@@ -121,6 +121,8 @@ alias hitme="python -m SimpleHTTPServer"
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
 # necessary to make rake work inside of zsh
 alias rake="noglob rake"
 
@@ -170,7 +172,7 @@ i() { cd "$(cat ~/.save_dir)" ; }
 # mhn 2011.7.19
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export NVM_DIR="/Users/Harsha/.nvm"
+export NVM_DIR="$(brew --prefix nvm)"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
@@ -195,17 +197,13 @@ function lwd() {
   [[ ! -r "$cache_file" ]] || cd "`cat "$cache_file"`"
 }
 
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/Harsha/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ensure that the gpg-agent is running on opening a shell
-[ -f ~/.gnupg/gpg-agent.env ] && source ~/.gnupg/gpg-agent.env
-if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --log-file /tmp/gpg.log --write-env-file ~/.gnupg/gpg-agent.env --pinentry-program /usr/local/bin/pinentry-mac)
-fi
+#[ -f ~/.gnupg/gpg-agent.env ] && source ~/.gnupg/gpg-agent.env
+#if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+#  export GPG_AGENT_INFO
+#else
+#  eval $(gpg-agent --daemon --log-file /tmp/gpg.log --write-env-file ~/.gnupg/gpg-agent.env --pinentry-program /usr/local/bin/pinentry-mac)
+#fi
