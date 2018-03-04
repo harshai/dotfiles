@@ -7,7 +7,6 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
-    ~/.gitconfig_local: gitconfig_local
     ~/.mackup.cfg: mackup
     ~/.ssh/config:
         path: ssh/config
