@@ -8,17 +8,20 @@
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.mackup.cfg: mackup
-    ~/.ssh/config:
-        path: ssh/config
-        create: true
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
     ~/.config/nvim:
         path: config/nvim/
         create: true
-    ~/.config/iterm:
-        path: config/iterm/
+    ~/.ssh/config:
+        path: ssh/config
         create: true
+    ~/.itermocil:
+        path: config/itermocil/
+        create: true
+    # ~/.config/iterm:
+    #     path: config/iterm/
+    #     create: true
 
 - shell:
     -

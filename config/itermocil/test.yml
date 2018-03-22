@@ -1,0 +1,10 @@
+windows:
+  - name: sample-three-panes
+    root: ~/Code/elm-hn
+    layout: main-vertical-flipped
+    panes:
+      - commands:
+        - git pull
+        - git status
+      - rails server
+      - vim

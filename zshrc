@@ -108,6 +108,7 @@ alias bes='bundle exec spinach'
 alias ber='bundle exec rspec'
 alias serve_this="python -m SimpleHTTPServer"
 alias hitme="python -m SimpleHTTPServer"
+alias clean="printf '\e]50;ClearScrollback\a'"
 
 
 # -------------------------------------------------------------------
@@ -207,3 +208,7 @@ function lwd() {
 #else
 #  eval $(gpg-agent --daemon --log-file /tmp/gpg.log --write-env-file ~/.gnupg/gpg-agent.env --pinentry-program /usr/local/bin/pinentry-mac)
 #fi
+#
+
+# Autocomplete for itermocil
+compctl -g '~/.itermocil/*(:t:r)' itermocil
