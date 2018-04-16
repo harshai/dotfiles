@@ -8,7 +8,7 @@
     default = simple
 
 [core]
-    excludesfile = /Users/Harsha/.gitignore_global
+	excludesfile = /Users/isriharsha/.gitignore_global
     pager = diff-so-fancy | less --tabs=4 -RFX
 
 ; [commit]
@@ -50,3 +50,9 @@
 
 [include]
     path = .gitconfig_local
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

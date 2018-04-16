@@ -166,11 +166,6 @@ else
   set shell=/bin/sh
 endif
 
-" session management
-let g:session_directory = "~/.config/nvim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "no"
-let g:session_command_aliases = 1
 
 "*****************************************************************************
 "" Visual Settings
@@ -182,6 +177,7 @@ set mouse=a
 let no_buffers_menu=1
 set background=dark
 colorscheme gruvbox
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set inccommand=nosplit
 
 set mouse=a
@@ -234,14 +230,6 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" vim-airline
-let g:airline_theme = 'gruvbox'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -257,6 +245,9 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
+"*****************************************************************************
+" Plugin config
+"*****************************************************************************
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', 'node_modules', '.happy_pack']
@@ -288,8 +279,33 @@ endif
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+
 " neosnippet
 let g:neosnippet#enable_completed_snippet = 1
+
+" session management
+let g:session_directory = "~/.config/nvim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+
+let g:startify_session_persistence = 1
+let g:startify_session_dir = "~/.config/nvim/session"
+
+" vim-airline
+let g:airline_theme = 'gruvbox'
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
+
+" gruvbox
+let g:gruvbox_hls_cursor = 'orange'
+let g:gruvbox_number_column = 'none'
+let g:gruvbox_improved_strings = 1
+let g:gruvbox_improved_warnings = 1
+let g:gruvbox_contrast_dark = 'hard'
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
@@ -372,6 +388,7 @@ noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
 "" Git
+nnoremap <Leader>gbr :.Gbrowse<CR>
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gsh :Gpush<CR>
@@ -400,6 +417,10 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" Quickly insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
 
 "" Map escape
 imap jj <Esc>
@@ -493,8 +514,6 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
 
 "" Toggle between relative and custom numbers
 nnoremap <C-n> :call  ToggleNumber()<CR>

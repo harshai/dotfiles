@@ -16,7 +16,7 @@ cask 'font-fantasque-sans-mono'
 
 # Languages
 brew "elixir"
-brew "python"
+brew "python3"
 brew "node"
 brew "ruby"
 brew "elm"
