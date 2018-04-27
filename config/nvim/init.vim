@@ -45,6 +45,7 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rhubarb'
+Plug 'tommcdo/vim-fubitive'
 
 " Not part of vim bootstrap
 Plug 'rizzatti/dash.vim'
@@ -180,6 +181,7 @@ set background=dark
 colorscheme gruvbox
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set inccommand=nosplit
+set noshowmode
 
 set mouse=a
 set mousemodel=popup
@@ -364,6 +366,8 @@ augroup vimrc-make-cmake
 augroup END
 
 set autoread
+autocmd FocusGained * checktime
+
 "" Hilight current line in inset mode
 :autocmd InsertEnter,InsertLeave * set cul!
 
@@ -415,6 +419,11 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 "" Tig
 nnoremap <Leader>t :Tig<Cr>
+
+"" Exit from terminal mode
+tnoremap jk <C-\><C-n>
+tnoremap jj <C-\><C-n>
+
 "" Opens an edit command with the path of the currently edited file filled in
 noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
