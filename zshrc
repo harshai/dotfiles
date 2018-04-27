@@ -180,6 +180,8 @@ export PATH="$PATH:$(yarn global bin)"
 # Keeps track of the last used working directory and automatically jumps
 # into it for new shells.
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # Flag indicating if we've previously jumped to last directory.
 typeset -g ZSH_LAST_WORKING_DIRECTORY
 mkdir -p $ZSH_CACHE_DIR
