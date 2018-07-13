@@ -7,7 +7,7 @@ endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "elixir,html,javascript,ruby"
+let g:vim_bootstrap_langs = "html,javascript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -31,6 +31,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -46,6 +47,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fubitive'
+Plug 'romainl/vim-cool'
 
 " Not part of vim bootstrap
 Plug 'rizzatti/dash.vim'
@@ -92,7 +94,8 @@ Plug 'mattn/emmet-vim'
 
 " javascript
 "" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'wokalski/autocomplete-flow'
 " For func argument completion
@@ -185,7 +188,7 @@ set noshowmode
 
 set mouse=a
 set mousemodel=popup
-set t_Co=256
+set termguicolors
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
@@ -258,10 +261,17 @@ let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=2
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize = 30
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrowNERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrows=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <leader>g :NERDTreeFind<CR>
 noremap <C-g> :NERDTreeToggle<CR>
+
+let g:CoolTotalMatches = 1
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
@@ -308,7 +318,7 @@ let g:gruvbox_hls_cursor = 'orange'
 let g:gruvbox_number_column = 'none'
 let g:gruvbox_improved_strings = 1
 let g:gruvbox_improved_warnings = 1
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_termcolors = 256
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
@@ -372,7 +382,7 @@ autocmd FocusGained * checktime
 :autocmd InsertEnter,InsertLeave * set cul!
 
 " Write file on insert mode exit
-:autocmd InsertLeave * write
+" ":autocmd InsertLeave * write
 
 " Clear whitespace on insert mode exit
 :autocmd InsertLeave * :call ClearWhiteSpace()
@@ -526,6 +536,17 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+"" * and # behave as expected in visual mode
+"" http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 "" Toggle between relative and custom numbers
 nnoremap <C-n> :call  ToggleNumber()<CR>
@@ -577,6 +598,7 @@ let g:ale_fixers = {
   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
+let g:ale_fix_on_save = 1
 map <leader>aj <Plug>(ale_next_wrap)
 map <leader>ak <Plug>(ale_previous_wrap)
 map <leader>af <Plug>(ale_fix)

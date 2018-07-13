@@ -7,7 +7,6 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #export ZSH_THEME="robbyrussell"
 export ZSH_THEME="ys"
-
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
 
@@ -210,3 +209,8 @@ function lwd() {
 
 # Autocomplete for itermocil
 compctl -g '~/.itermocil/*(:t:r)' itermocil
+
+# Run multiple bolt packages
+function atlastart() {
+  yarn run projector ./projector.js start --packages "$1"
+}
