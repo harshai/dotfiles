@@ -68,6 +68,7 @@ alias 'rm=rm -i'
 # -------------------------------------------------------------------
 # Git
 # -------------------------------------------------------------------
+alias git='hub'
 alias ga='git add'
 alias gitx='open -a GitX .'
 alias gp='git push'
@@ -120,6 +121,7 @@ alias clean="printf '\e]50;ClearScrollback\a'"
 # -------------------------------------------------------------------
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias vim8='"vim"'
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
@@ -213,4 +215,39 @@ compctl -g '~/.itermocil/*(:t:r)' itermocil
 # Run multiple bolt packages
 function atlastart() {
   yarn run projector ./projector.js start --packages "$1"
+}
+
+# tabtab source for bolt package
+# uninstall by removing these lines or running `tabtab uninstall bolt`
+[[ -f /Users/isriharsha/.nvm/versions/node/v10.7.0/lib/node_modules/bolt-complete/node_modules/tabtab/.completions/bolt.zsh ]] && . /Users/isriharsha/.nvm/versions/node/v10.7.0/lib/node_modules/bolt-complete/node_modules/tabtab/.completions/bolt.zsh
+
+
+# Bolt alias
+function buildesm() {
+  NODE_ENV=production BABEL_ENV=production:esm bolt workspaces exec --parallel --only-fs "$1" -- babel src -d dist/esm --root-mode upward;
+}
+
+function buildcjs() {
+  NODE_ENV=production BABEL_ENV=production:cjs bolt workspaces exec --parallel --only-fs "$1" -- babel src -d dist/cjs --root-mode upward
+}
+function buildpkg() {
+  bolt workspaces exec --only-fs "$1" -- copy-pkg package.json dist/package.json --only name,version,sideEffects
+}
+
+function buildflow() {
+  buildesm "$1"
+  buildcjs "$1"
+  buildpkg "$1"
+}
+
+function copydist() {
+  cp -rf "../atlaskit-mk-2/packages/core/${1}/dist" "./node_modules/@atlaskit/${1}/"
+}
+
+function buildnavonly() {
+  buildflow packages/core/navigation-next
+}
+
+function buildglobalonly() {
+  buildflow packages/core/global-navigation
 }

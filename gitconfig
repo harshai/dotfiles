@@ -5,7 +5,7 @@
     smudge = git-lfs smudge -- %f
 
 [push]
-    default = simple
+	default = upstream
 
 [core]
 	excludesfile = /Users/isriharsha/.gitignore_global

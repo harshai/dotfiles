@@ -35,10 +35,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
@@ -47,7 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fubitive'
-Plug 'romainl/vim-cool'
+Plug 'ironhouzi/vim-stim'
 
 " Not part of vim bootstrap
 Plug 'rizzatti/dash.vim'
@@ -101,6 +100,7 @@ Plug 'wokalski/autocomplete-flow'
 " For func argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
 " ruby
 Plug 'tpope/vim-rails'
@@ -162,6 +162,9 @@ set smartcase
 set nobackup
 set noswapfile
 
+""Safe write
+set backupcopy=yes
+
 set fileformats=unix,dos,mac
 set showcmd
 
@@ -188,6 +191,7 @@ set noshowmode
 
 set mouse=a
 set mousemodel=popup
+set t_Co=256
 set termguicolors
 set guioptions=egmrti
 set gfn=Monospace\ 10
@@ -231,6 +235,10 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+"Insert Single Character in Vim
+"https://superuser.com/questions/581572/insert-single-character-in-vim
+nnoremap <Leader>i i_<Esc>r
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -307,13 +315,13 @@ let g:startify_session_dir = "~/.config/nvim/session"
 
 " vim-airline
 let g:airline_theme = 'gruvbox'
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
-" gruvbox
+" gruvbx
 let g:gruvbox_hls_cursor = 'orange'
 let g:gruvbox_number_column = 'none'
 let g:gruvbox_improved_strings = 1
@@ -419,10 +427,6 @@ nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
-"" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -474,13 +478,13 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
 " syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_error_symbol='✗'
+" let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_style_error_symbol = '✗'
+" let g:syntastic_style_warning_symbol = '⚠'
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_aggregate_errors = 1
 
 " Tagbar
 nmap <silent> <leader>r :TagbarToggle<CR>
@@ -553,6 +557,7 @@ nnoremap <C-n> :call  ToggleNumber()<CR>
 
 " Dash integration
 :nmap <silent> <leader>d <Plug>DashSearch
+
 "****************************************************************************(
 "( Custom configs
 "*****************************************************************************
@@ -568,6 +573,7 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+let g:javascript_plugin_flow = 1
 
 " vim-javascript
 augroup vimrc-javascript
@@ -594,11 +600,17 @@ let g:tagbar_type_ruby = {
 
 " Vim Ale config
 let g:ale_fixers = {
-  \   'javascript': ['prettier'],
+  \   'javascript': [ 'prettier', 'eslint'],
   \ }
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
+let g:ale_linters_ignore = {
+      \ 'javascript': ['tsserver']
+      \}
+let g:ale_sign_error = '◉'
+let g:ale_sign_warning = '•'
+hi link ALEErrorSign    GruvboxRed
+hi link ALEWarningSign  GruvboxYellow
 let g:ale_fix_on_save = 1
+let g:ale_set_highlights = 0
 map <leader>aj <Plug>(ale_next_wrap)
 map <leader>ak <Plug>(ale_previous_wrap)
 map <leader>af <Plug>(ale_fix)
@@ -654,3 +666,16 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+" Motion for "next object". For example, "din(" would go to the next "()" pair
+" and delete its contents.
+" Credit: https://gist.github.com/AndrewRadev/1171559
+onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+onoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+xnoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+
+function! s:NextTextObject(motion)
+  echo
+  let c = nr2char(getchar())
+  exe "normal! f".c."v".a:motion.c
+endfunction

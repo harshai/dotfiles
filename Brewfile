@@ -61,7 +61,8 @@ cask 'google-chrome'
 cask 'firefox'
 cask 'telegram'
 brew "neovim"
-brew "vim"
+/* brew "vim" */
+cask 'istat-menus'
 
 mas 'Amphetamine', id: 937984704
 mas 'Affinity Photo', id: 824183456
