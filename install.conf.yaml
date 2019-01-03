@@ -19,8 +19,12 @@
     ~/.itermocil:
         path: config/itermocil/
         create: true
-    ~/.vimrc:
+    ~/.config/.vim:
         path: config/vim/
+        create: true
+    ~/.vimrc:
+        path: config/vim/vimrc
+        create: true
     # ~/.config/iterm:
     #     path: config/iterm/
     #     create: true

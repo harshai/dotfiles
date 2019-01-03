@@ -624,7 +624,7 @@ endif
 "" Open vimrc from anywhere
 map <leader>vimrc :tabe $MYVIMRC<cr>
 "" auto source vimrc on close
-autocmd bufwritepost .vimrc source $MYVIMRC
+"" autocmd bufwritepost .vimrc source $MYVIMRC
 
 "*****************************************************************************
 "" Convenience variables
