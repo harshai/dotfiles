@@ -601,6 +601,7 @@ let g:tagbar_type_ruby = {
 " Vim Ale config
 let g:ale_fixers = {
   \   'javascript': [ 'prettier', 'eslint'],
+  \   'typescript': ['tsserver']
   \ }
 let g:ale_linters_ignore = {
       \ 'javascript': ['tsserver']
