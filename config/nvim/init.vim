@@ -61,6 +61,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-startify'
 Plug 'codeindulgence/vim-tig'
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -601,7 +603,7 @@ let g:tagbar_type_ruby = {
 " Vim Ale config
 let g:ale_fixers = {
   \   'javascript': [ 'prettier', 'eslint'],
-  \   'typescript': ['tsserver']
+  \   'typescript': ['prettier', 'tslint', 'eslint']
   \ }
 let g:ale_linters_ignore = {
       \ 'javascript': ['tsserver']
