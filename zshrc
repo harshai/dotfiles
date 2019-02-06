@@ -114,6 +114,15 @@ alias clean="printf '\e]50;ClearScrollback\a'"
 # -------------------------------------------------------------------
 # Node
 # -------------------------------------------------------------------
+function chpwd {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) ~= $(nvm version default) ]]; then
+    echo "Reverting to default nvm: $(nvm version default)"
+    nvm use default
+  fi
+}
+
 
 
 # -------------------------------------------------------------------
@@ -215,16 +224,6 @@ compctl -g '~/.itermocil/*(:t:r)' itermocil
 # Run multiple bolt packages
 function atlastart() {
   yarn run projector ./projector.js start --packages "$1"
-}
-
-# tabtab source for bolt package
-# uninstall by removing these lines or running `tabtab uninstall bolt`
-[[ -f /Users/isriharsha/.nvm/versions/node/v10.7.0/lib/node_modules/bolt-complete/node_modules/tabtab/.completions/bolt.zsh ]] && . /Users/isriharsha/.nvm/versions/node/v10.7.0/lib/node_modules/bolt-complete/node_modules/tabtab/.completions/bolt.zsh
-
-
-# Bolt alias
-function buildesm() {
-  NODE_ENV=production BABEL_ENV=production:esm bolt workspaces exec --parallel --only-fs "$1" -- babel src -d dist/esm --root-mode upward;
 }
 
 function buildcjs() {
