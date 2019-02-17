@@ -163,6 +163,7 @@ set smartcase
 "" Directories for swp files
 set nobackup
 set noswapfile
+set backupcopy=yes
 
 ""Safe write
 set backupcopy=yes
