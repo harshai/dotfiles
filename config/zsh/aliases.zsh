@@ -1,0 +1,53 @@
+# -------------------------------------------------------------------
+# Git
+# -------------------------------------------------------------------
+alias ga='git add'
+alias gp='git push'
+alias glr='git log'
+alias gs='git status'
+alias gst='git status'
+alias gd='git diff'
+alias gm='git commit -S -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gco='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gpr='git pull --rebase'
+alias gcl='git clone'
+alias gf='git reflog'
+alias g='git'
+alias gcmsg='git commit -m'
+alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(green) %an, %ar%Creset"'
+
+
+# -------------------------------------------------------------------
+# Workflow
+# -------------------------------------------------------------------
+alias hitme="python -m SimpleHTTPServer"
+alias clean="printf '\e]50;ClearScrollback\a'"
+
+# -------------------------------------------------------------------
+# Editors
+# -------------------------------------------------------------------
+alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias vim='nvim'
+alias vi='vim'
+
+
+# -------------------------------------------------------------------
+# Utils
+# -------------------------------------------------------------------
+alias bk='cd $OLDPWD'
+alias ttop='top -ocpu -R -F -s 2 -n30'
+alias ls='exa'
+alias lh='exa -a | egrep "^\."'
+alias md='mkdir'
+alias l='exa -lFh'
+alias lr='exa -tRFh'
+alias ll='exa -l'
+alias ldot='exa -ld .*'
+alias zshrc='$EDITOR ~/.zshrc'
+alias h='history'

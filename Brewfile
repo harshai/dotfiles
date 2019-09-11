@@ -45,6 +45,7 @@ brew "fzf"
 brew "exa"
 brew 'mas'
 brew 'mackup'
+brew 'getantibody/tap/antibody'
 
 # Applications
 cask '1password'

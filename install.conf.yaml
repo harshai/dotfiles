@@ -1,24 +1,27 @@
 - clean: ['~']
 
+- defaults:
+    link:
+        relink: true
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.bash_profile: bash_profile
-    ~/.bashrc: bashrc
-    ~/.gitconfig: gitconfig
-    ~/.mackup.cfg: mackup
-    ~/.zprofile: zprofile
+    # ~/.gitconfig: gitconfig
+    # ~/.mackup.cfg: mackup
     ~/.zshrc: zshrc
-    ~/.config/nvim:
-        path: config/nvim/
+    ~/.config/zsh:
+        path: config/zsh/
         create: true
-    ~/.ssh/config:
-        path: ssh/config
-        create: true
-    ~/.itermocil:
-        path: config/itermocil/
-        create: true
+    # ~/.config/nvim:
+    #     path: config/nvim/
+    #     create: true
+    # ~/.ssh/config:
+    #     path: ssh/config
+    #     create: true
+    # ~/.itermocil:
+    #     path: config/itermocil/
+    #     create: true
     # ~/.config/iterm:
     #     path: config/iterm/
     #     create: true
