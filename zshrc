@@ -15,6 +15,7 @@ done
 
 # Enable autocomplete
 autoload -Uz compinit
+# Cache autocomplete data, update once a day.
 # see https://carlosbecker.com/posts/speeding-up-zsh/ and https://gist.github.com/ctechols/ca1035271ad134841284
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
@@ -27,3 +28,12 @@ fi
 if _has fasd; then
   eval "$(fasd --init auto)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+# This adds up to zsh load time. Find alternative
+source ~/.nvm/nvm.sh
+
+# Autoload nvm use
+autoload -U add-zsh-hook
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
