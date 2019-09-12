@@ -22,3 +22,8 @@ if [ $(date +'%j') != $updated_at ]; then
 else
   compinit -C -i
 fi
+
+# Enable fasd
+if _has fasd; then
+  eval "$(fasd --init auto)"
+fi

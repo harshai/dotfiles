@@ -2,6 +2,10 @@ zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
-buonomo/yarn-completion
-denysdovhan/spaceship-prompt
 
+# Prompt
+mafredri/zsh-async
+sindresorhus/pure
+
+# git-extras
+unixorn/git-extra-commands
