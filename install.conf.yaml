@@ -7,15 +7,15 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    # ~/.gitconfig: gitconfig
-    # ~/.mackup.cfg: mackup
+    ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
     ~/.config/zsh:
         path: config/zsh/
         create: true
-    # ~/.config/nvim:
-    #     path: config/nvim/
-    #     create: true
+    ~/.config/nvim:
+        path: config/nvim/
+        create: true
+    # ~/.mackup.cfg: mackup
     # ~/.ssh/config:
     #     path: ssh/config
     #     create: true
