@@ -35,6 +35,7 @@ alias clean="printf '\e]50;ClearScrollback\a'"
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias vim='nvim'
 alias vi='vim'
+alias vim8='\vim'
 
 
 # -------------------------------------------------------------------
