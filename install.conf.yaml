@@ -15,6 +15,10 @@
     ~/.config/nvim:
         path: config/nvim/
         create: true
+    ~/.vim: vim
+    ~/.config/vim:
+        path: config/vim/
+        create: true
     # ~/.mackup.cfg: mackup
     # ~/.ssh/config:
     #     path: ssh/config

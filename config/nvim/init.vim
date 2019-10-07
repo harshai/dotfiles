@@ -214,6 +214,15 @@ endif
 set gcr=a:blinkon0
 set scrolloff=3
 
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+set guifont=Monaco:h10
+
+
 "" Status bar
 set laststatus=2
 
