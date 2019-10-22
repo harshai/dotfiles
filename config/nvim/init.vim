@@ -595,6 +595,7 @@ let g:tagbar_type_ruby = {
 " Vim Ale config
 let g:ale_fixers = {
   \   'javascript': ['prettier'],
+  \   'typescript': ['prettier'],
   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
