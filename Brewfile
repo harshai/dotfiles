@@ -1,10 +1,8 @@
 tap "caskroom/cask"
 tap "caskroom/fonts"
-tap "codekitchen/dinghy"
 tap "homebrew/boneyard"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/php"
 tap "homebrew/services"
 tap "neovim/neovim"
 
@@ -15,19 +13,11 @@ cask 'font-inconsolata'
 cask 'font-fantasque-sans-mono'
 
 # Languages
-brew "elixir"
-brew "python3"
 brew "node"
-brew "ruby"
 brew "elm"
-brew 'exercism'
 
 # Databases
 brew "sqlite"
-brew "mysql"
-brew "postgresql", restart_service: true
-brew "mongodb", restart_service: true
-brew "redis", restart_service: true
 
 # Utils
 brew "nvm"
@@ -48,21 +38,29 @@ brew 'mackup'
 brew 'getantibody/tap/antibody'
 
 # Applications
-cask '1password'
-cask 'dropbox'
-cask 'vlc'
-cask 'lumen'
-cask 'spectacle'
-cask "postman"
-cask "sublime-text"
-cask "bettertouchtool"
-cask 'iterm2'
-cask 'dash'
-cask 'google-chrome'
-cask 'firefox'
-cask 'telegram'
 brew "neovim"
 brew "vim"
+cask "bettertouchtool"
+cask "postman"
+cask "sublime-text"
+cask '1password'
+cask 'dash'
+cask 'dropbox'
+cask 'firefox'
+cask 'google-chrome'
+cask 'iterm2'
+cask 'spectacle'
+cask 'telegram'
+cask 'vlc'
+cask 'cold-turkey-blocker'
+cask 'little-snitch'
+cask 'micro-snitch'
+cask 'dozer'
+cask 'istat-menus'
+cask 'discord'
+cask 'steam'
+cask 'keka'
+cask 'synergy'
 
 mas 'Amphetamine', id: 937984704
 mas 'Affinity Photo', id: 824183456
@@ -71,30 +69,5 @@ mas 'Pocket', id: 568494494
 mas 'External Editors For Photos', id: 1074021862
 mas 'DxOOpticsProForPhotos', id: 1056077392
 mas 'GIPHY CAPTURE', id: 668208984
+mas 'Bear Notes', id: 1091189122
 
-# Cleanup
-brew "ctags"
-brew "direnv"
-brew "jpeg"
-brew "openssl"
-brew "freetype"
-brew "gdbm"
-brew "gnu-getopt"
-brew "global"
-brew "icu4c"
-brew "heroku"
-brew "hub"
-brew "hugo"
-brew "xz"
-brew "imagemagick"
-brew "libevent"
-brew "libksba"
-brew "libxml2"
-brew "libyaml"
-brew "pcre"
-brew "pkg-config"
-brew "ruby-build"
-brew "rbenv"
-brew "unixodbc"
-brew "codekitchen/dinghy/unfs3"
-brew "codekitchen/dinghy/dinghy"
