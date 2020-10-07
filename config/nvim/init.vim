@@ -48,6 +48,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fubitive'
 Plug 'romainl/vim-cool'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Not part of vim bootstrap
 Plug 'rizzatti/dash.vim'
@@ -605,6 +606,7 @@ let g:tagbar_type_ruby = {
 let g:ale_fixers = {
   \   'javascript': ['prettier'],
   \   'typescript': ['prettier'],
+  \   'typescriptreact': ['prettier'],
   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
