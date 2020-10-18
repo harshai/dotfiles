@@ -1,12 +1,13 @@
-"" Install vim-plug if missing
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+let VIM_CONFIG_PATH="~/.config/vim"
+let bindings = VIM_CONFIG_PATH.'/bindings.vim'
+let functions = VIM_CONFIG_PATH.'/functions.vim'
+let visual = VIM_CONFIG_PATH.'/visual.vim'
+let plugins = VIM_CONFIG_PATH.'/plugins.vim'
 
-"" Load plugins
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-call plug#end()
+
+exec "source " bindings
+exec "source " functions
+exec "source " visual
+exec "source " plugins
+

@@ -1,5 +1,9 @@
-"" NORMAL MODE
+"" Map leader to ,
+let mapleader="\<SPACE>"
 
+"""""""""""""""""
+"" NORMAL MODE
+"""""""""""""""""
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
@@ -19,6 +23,12 @@ noremap <leader>q :bp<CR>
 noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
 
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
 "" Close buffer
 noremap <leader>c :b#<bar>bd#<CR>
 
@@ -32,7 +42,9 @@ noremap <leader>s :w!<cr>
 nnoremap <C-n> :call  ToggleNumber()<CR>
 
 
+"""""""""""""""""
 "" TERMINAL MODE
+"""""""""""""""""
 
 "" Exit from terminal mode
 tnoremap jk <C-\><C-n>
@@ -42,7 +54,9 @@ tnoremap jj <C-\><C-n>
 
 
 
+"""""""""""""""""
 "" INSERT MODE
+"""""""""""""""""
 
 "" Map escape
 imap jj <Esc>
@@ -51,7 +65,9 @@ imap jk <Esc>
 
 
 
+"""""""""""""""""
 "" VISUAL MODE
+"""""""""""""""""
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
@@ -59,3 +75,5 @@ vmap > >gv
 "" Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+echo "Bindings initialised"

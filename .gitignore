@@ -1,5 +1,6 @@
 # neovim plugins
 /config/nvim/plugged
+/vim/plugged
 
 # mundo undo list
 /config/nvim/undo

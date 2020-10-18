@@ -15,26 +15,19 @@
     ~/.config/nvim:
         path: config/nvim/
         create: true
-    ~/.vim: vim
+    ~/.vim:
+        path: vim
+        create: true
+    ~/.vimrc: config/vim/init.vim
     ~/.config/vim:
         path: config/vim/
         create: true
-    # ~/.mackup.cfg: mackup
-    # ~/.ssh/config:
-    #     path: ssh/config
-    #     create: true
-    # ~/.itermocil:
-    #     path: config/itermocil/
-    #     create: true
-    # ~/.config/iterm:
-    #     path: config/iterm/
-    #     create: true
 
 - shell:
     -
       command: brew bundle install
       stdout: true
-      description: Installing dependencies from Brew file
+      description: Installing dependencies from Brewfile
     -
       command: mackup restore
       stdout: true
