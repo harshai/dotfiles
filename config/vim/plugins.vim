@@ -1,8 +1,15 @@
 "" Load plugins
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+"" NERDTree
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "" Color
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/forest-night'
+" Plug 'franbach/miramare'
+" Plug 'lifepillar/vim-gruvbox8'
 
 call plug#end()
 

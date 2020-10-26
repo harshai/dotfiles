@@ -17,3 +17,5 @@ setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
 setopt no_beep # dont beep on error
+
+export LC_ALL=en_US.UTF-8 # set locales correctly
