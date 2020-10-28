@@ -6,7 +6,7 @@
 
 - create:
     - ~/projects
-    - ~/projects/patches/
+    - ~/projects/patches
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -21,9 +21,6 @@
     ~/.config/nvim:
         path: config/nvim/
         create: true
-    ~/.vim:
-        path: vim
-        create: true
     ~/.vimrc: config/vim/init.vim
     ~/.config/vim:
         path: config/vim/
@@ -32,14 +29,11 @@
         path: config/mackup
         create: true
 
+- brewfile:
+    - config/brew/brewfile
 
 - shell:
     - chsh -s $(which zsh)
-    - [chsh -s $(which zsh), Making zsh the default shell]
-    -
-      command: brew bundle install
-      stdout: true
-      description: Installing dependencies from Brewfile
     -
       command: mackup restore
       stdout: true
