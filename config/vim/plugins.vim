@@ -11,6 +11,10 @@ Plug 'sainnhe/forest-night'
 " Plug 'franbach/miramare'
 " Plug 'lifepillar/vim-gruvbox8'
 
+"" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 for f in split(glob('~/.config/vim/plugin_config/*.vim'), '\n')

@@ -14,6 +14,7 @@ config/iterm/com.googlecode.iterm2.plist
 #misc
 .netrwbook
 .netrwhist
+*.swp
 
 # local config
 gitconfig_local

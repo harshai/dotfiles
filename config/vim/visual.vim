@@ -13,21 +13,6 @@ set termguicolors
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
-
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-endif
-
 " Cursor
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=white
@@ -48,3 +33,7 @@ set smartcase
 set encoding=utf8
 set fillchars=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
+
+
+set showcmd
+
