@@ -7,8 +7,9 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.gitconfig: gitconfig
-    ~/.zshrc: zshrc
+    ~/.gitconfig: config/gitconfig
+    ~/.gitignore_global: config/gitignore_global
+    ~/.zshrc: config/zshrc
     ~/.config/zsh:
         path: config/zsh/
         create: true
@@ -28,6 +29,10 @@
 
 
 - shell:
+    -
+      command: mkdir ~/Code
+      stdout: true
+      description: Create folder for Code
     -
       command: brew bundle install
       stdout: true

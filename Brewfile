@@ -7,35 +7,42 @@ tap "homebrew/services"
 tap "neovim/neovim"
 
 # Fonts
-cask 'font-fira-code'
-cask 'font-mononoki'
-cask 'font-inconsolata'
 cask 'font-fantasque-sans-mono'
+cask 'font-fira-code'
+cask 'font-fira-code-nerd-font'
+cask 'font-inconsolata'
+cask 'font-mononoki'
+cask 'font-mononoki-nerd-font'
 
 # Languages
-brew "node"
+brew "deno"
 brew "elm"
+brew "node"
 
 # Databases
 brew "sqlite"
 
 # Utils
-brew "nvm"
+brew "autojump"
+brew "exa"
+brew "fasd"
+brew "fzf"
 brew "git"
 brew "git-extras"
-brew 'diff-so-fancy'
+brew "git-lfs"
+brew "hub"
+brew "nvm"
+brew "the_silver_searcher"
 brew "tig"
-brew "autojump"
-brew "fasd"
+brew "tldr'
 brew "yarn"
 brew "zsh"
 brew "zsh-completions"
-brew "the_silver_searcher"
-brew "fzf"
-brew "exa"
-brew 'mas'
-brew 'mackup'
+brew 'diff-so-fancy'
 brew 'getantibody/tap/antibody'
+brew 'mackup'
+brew 'mas'
+brew 'tree'
 
 # Applications
 brew "neovim"
@@ -44,23 +51,23 @@ cask "bettertouchtool"
 cask "postman"
 cask "sublime-text"
 cask '1password'
+cask 'cold-turkey-blocker'
 cask 'dash'
+cask 'discord'
+cask 'dozer'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
+cask 'istat-menus'
 cask 'iterm2'
-cask 'spectacle'
-cask 'telegram'
-cask 'vlc'
-cask 'cold-turkey-blocker'
+cask 'keka'
 cask 'little-snitch'
 cask 'micro-snitch'
-cask 'dozer'
-cask 'istat-menus'
-cask 'discord'
+cask 'spectacle'
 cask 'steam'
-cask 'keka'
 cask 'synergy'
+cask 'telegram'
+cask 'vlc'
 
 mas 'Amphetamine', id: 937984704
 mas 'Affinity Photo', id: 824183456
