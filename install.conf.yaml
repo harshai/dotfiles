@@ -3,6 +3,11 @@
 - defaults:
     link:
         relink: true
+
+- create:
+    - ~/projects
+    - ~/projects/patches/
+
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
@@ -29,10 +34,8 @@
 
 
 - shell:
-    -
-      command: mkdir ~/Code
-      stdout: true
-      description: Create folder for Code
+    - chsh -s $(which zsh)
+    - [chsh -s $(which zsh), Making zsh the default shell]
     -
       command: brew bundle install
       stdout: true
@@ -42,4 +45,3 @@
       stdout: true
       stdin: true
       description: Restoring App configs using mackup
-    - [echo 'chsh -s /bin/zsh, To set zsh as default shell']
