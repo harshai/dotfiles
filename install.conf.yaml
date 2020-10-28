@@ -22,6 +22,10 @@
     ~/.config/vim:
         path: config/vim/
         create: true
+    ~/.mackup.cfg:
+        path: config/mackup
+        create: true
+
 
 - shell:
     -
