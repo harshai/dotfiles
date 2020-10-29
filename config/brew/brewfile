@@ -1,5 +1,5 @@
-tap "caskroom/cask"
-tap "caskroom/fonts"
+tap "homebrew/cask"
+tap "homebrew/fonts"
 tap "homebrew/boneyard"
 tap "homebrew/bundle"
 tap "homebrew/core"
