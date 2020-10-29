@@ -33,7 +33,6 @@
     - ~/projects/patches
 
 - shell:
-    - chsh -s $(which zsh)
     -
       command: mackup restore
       stdout: true
