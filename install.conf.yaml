@@ -8,9 +8,9 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.gitconfig: config/gitconfig
-    ~/.gitignore_global: config/gitignore_global
-    ~/.zshrc: config/zshrc
+    ~/.gitconfig: config/git/gitconfig
+    ~/.gitignore_global: config/git/gitignore_global
+    ~/.zshrc: config/zsh/zshrc
     ~/.config/zsh:
         path: config/zsh/
         create: true
@@ -24,6 +24,8 @@
     ~/.mackup.cfg:
         path: config/mackup
         create: true
+    ~/.ssh/config: config/ssh/config
+
 
 - brewfile:
     - config/brew/brewfile
