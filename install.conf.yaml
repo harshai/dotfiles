@@ -38,3 +38,8 @@
       stdout: true
       stdin: true
       description: Restoring App configs using mackup
+    -
+      command: source $HOME/.zshrc
+      stdout: true
+      stdin: true
+      description: Source zshrc config to generate the .zsh_plugin file for static loading
