@@ -4,10 +4,6 @@
     link:
         relink: true
 
-- create:
-    - ~/projects
-    - ~/projects/patches
-
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
@@ -31,6 +27,10 @@
 
 - brewfile:
     - config/brew/brewfile
+
+- create:
+    - ~/projects
+    - ~/projects/patches
 
 - shell:
     - chsh -s $(which zsh)
