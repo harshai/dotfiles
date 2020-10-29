@@ -14,12 +14,12 @@ brew "node"
 brew "sqlite"
 
 # Utils
+brew "antibody"
 brew "autojump"
 brew "diff-so-fancy"
 brew "exa"
 brew "fasd"
 brew "fzf"
-brew "getantibody/tap/antibody"
 brew "git"
 brew "git-extras"
 brew "git-lfs"
