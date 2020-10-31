@@ -4,3 +4,5 @@ set backspace=indent,eol,start
 set nobackup
 set noswapfile
 
+"" Yank copies to clipboard
+set clipboard=unnamed,unnamedplus

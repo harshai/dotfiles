@@ -12,14 +12,26 @@ Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
             \ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 "" Color
 Plug 'sainnhe/forest-night'
-" Plug 'franbach/miramare'
-" Plug 'lifepillar/vim-gruvbox8'
 
 "" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+"" Yank
+Plug 'machakann/vim-highlightedyank'
+
+"" neovim only plugins
+if has('nvim')
+
+endif
+
+"" vim only plugins
+if !has('nvim')
+	Plug 'markonm/traces.vim'
+endif
 
 call plug#end()
 
