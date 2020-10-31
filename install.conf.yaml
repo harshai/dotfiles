@@ -33,6 +33,7 @@
 - create:
     - ~/projects
     - ~/projects/patches
+    - ~/.vim/undo
 
 - shell:
     -
