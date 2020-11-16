@@ -8,3 +8,8 @@
   	User git
   	IdentityFile ~/.ssh/isriharsha_rsa
   	IdentitiesOnly=yes
+  Host stash.atlassian.com
+  	Hostname stash.atlassian.com
+  	User git
+  	IdentityFile ~/.ssh/isriharsha_rsa
+  	IdentitiesOnly=yes
