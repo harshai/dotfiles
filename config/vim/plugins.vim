@@ -23,6 +23,13 @@ Plug 'airblade/vim-gitgutter'
 "" Yank
 Plug 'machakann/vim-highlightedyank'
 
+"" Search
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+
+"" Visualise undo list
+Plug 'simnalamburt/vim-mundo'
+
+
 "" neovim only plugins
 if has('nvim')
 
