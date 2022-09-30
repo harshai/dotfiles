@@ -23,4 +23,4 @@ setopt no_beep # dont beep on error
 
 export LC_ALL=en_US.UTF-8 # set locales correctly
 
-$EDITOR="code"
+export EDITOR="code" # set default editor as VSCODE
