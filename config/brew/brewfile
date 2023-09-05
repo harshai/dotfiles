@@ -1,6 +1,6 @@
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "neovim/neovim"
@@ -19,46 +19,39 @@ brew "diff-so-fancy"
 brew "exa"
 brew "fasd"
 brew "fzf"
-brew "git"
 brew "git-extras"
 brew "git-lfs"
+brew "git"
 brew "hub"
 brew "mackup"
 brew "mas"
 brew "nvm"
 brew "ripgrep"
-brew "svn"
 brew "the_silver_searcher"
 brew "tig"
 brew "tldr"
 brew "tree"
 brew "yarn"
-brew "zsh"
 brew "zsh-completions"
-brew "zsh-syntax-highlighting"
 brew "zsh-history-substring-search"
+brew "zsh-syntax-highlighting"
+brew "zsh"
 
 # Fonts
 cask "font-fantasque-sans-mono"
-cask "font-fira-code"
 cask "font-fira-code-nerd-font"
+cask "font-fira-code"
 cask "font-inconsolata"
-cask "font-mononoki"
 cask "font-mononoki-nerd-font"
+cask "font-mononoki"
 
 # Applications
 brew "neovim"
 brew "vim"
 cask "bettertouchtool"
-cask "postman"
-cask "sublime-text"
-cask "1password"
-cask "cold-turkey-blocker"
-cask "dash"
-cask "discord"
+cask "bitwarden"
 cask "docker"
 cask "dozer"
-cask "dropbox"
 cask "firefox"
 cask "google-chrome"
 cask "istat-menus"
@@ -66,19 +59,17 @@ cask "iterm2"
 cask "keka"
 cask "little-snitch"
 cask "micro-snitch"
-cask "ngrok"
+cask "postman"
+cask "sourcetree"
 cask "spectacle"
-cask "steam"
-cask "synergy"
 cask "telegram"
-cask "vlc"
+cask "visual-studio-code"
 
-mas "Amphetamine", id: 937984704
 mas "Affinity Photo", id: 824183456
-mas "Flycut", id: 442160987
-mas "Pocket", id: 568494494
-mas "External Editors For Photos", id: 1074021862
+mas "Amphetamine", id: 937984704
 mas "DxOOpticsProForPhotos", id: 1056077392
+mas "External Editors For Photos", id: 1074021862
+mas "Flycut", id: 442160987
 mas "GIPHY CAPTURE", id: 668208984
-mas "Bear Notes", id: 1091189122
+mas "Pocket", id: 568494494
 

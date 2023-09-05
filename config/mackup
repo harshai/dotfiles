@@ -3,7 +3,6 @@ engine = icloud
 
 [applications_to_sync]
 spectacle
-sublime-text-3
 iterm2
 macosx
 telegram_macos

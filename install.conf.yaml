@@ -1,8 +1,8 @@
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - defaults:
     link:
-        relink: true
+      relink: true
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -12,20 +12,19 @@
     ~/.gitignore_global: config/git/gitignore_global
     ~/.zshrc: config/zsh/zshrc
     ~/.config/zsh:
-        path: config/zsh/
-        create: true
+      path: config/zsh/
+      create: true
     ~/.config/nvim:
-        path: config/nvim/
-        create: true
+      path: config/nvim/
+      create: true
     ~/.vimrc: config/vim/init.vim
     ~/.config/vim:
-        path: config/vim/
-        create: true
+      path: config/vim/
+      create: true
     ~/.mackup.cfg:
-        path: config/mackup
-        create: true
+      path: config/mackup
+      create: true
     ~/.ssh/config: config/ssh/config
-
 
 - brewfile:
     - config/brew/brewfile
@@ -36,13 +35,11 @@
     - ~/.vim/undo
 
 - shell:
-    -
-      command: mackup restore
+    - command: mackup restore
       stdout: true
       stdin: true
       description: Restoring App configs using mackup
-    -
-      command: source $HOME/.zshrc
+    - command: source $HOME/.zshrc
       stdout: true
       stdin: true
       description: Source zshrc config to generate the .zsh_plugin file for static loading
