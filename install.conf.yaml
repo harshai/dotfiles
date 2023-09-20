@@ -11,6 +11,7 @@
     ~/.gitconfig: config/git/gitconfig
     ~/.gitignore_global: config/git/gitignore_global
     ~/.zshrc: config/zsh/zshrc
+    ~/.zsh_plugins.txt: config/zsh/plugins.txt
     ~/.config/zsh:
       path: config/zsh/
       create: true
@@ -30,9 +31,10 @@
     - config/brew/brewfile
 
 - create:
-    - ~/projects
-    - ~/projects/patches
+    - ~/Developer
+    - ~/Developer/patches
     - ~/.vim/undo
+    - ~/.zprofile
 
 - shell:
     - command: mackup restore
@@ -43,3 +45,7 @@
       stdout: true
       stdin: true
       description: Source zshrc config to generate the .zsh_plugin file for static loading
+    - command: echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile; eval "$(/opt/homebrew/bin/brew shellenv)";
+      stdout: true
+      stdin: true
+      description: Add brew to $PATH

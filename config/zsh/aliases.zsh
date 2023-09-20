@@ -42,7 +42,6 @@ alias vim8='\vim'
 # -------------------------------------------------------------------
 alias bk='cd $OLDPWD'
 alias ttop='top -ocpu -R -F -s 2 -n30'
-alias ls='exa'
 alias lh='exa -a | egrep "^\."'
 alias md='mkdir'
 alias l='exa -lFh'

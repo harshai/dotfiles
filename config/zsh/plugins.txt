@@ -8,5 +8,5 @@ sindresorhus/pure
 # git-extras
 unixorn/git-extra-commands
 
-#autocomplte installed using brew
-/usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+# fast directory traversal
+ajeetdsouza/zoxide
