@@ -1,3 +1,5 @@
+# # run antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh whenever this file is updated
+
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 
