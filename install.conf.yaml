@@ -35,10 +35,6 @@
     - ~/.nvm
 
 - shell:
-    - command: mackup restore
-      stdout: true
-      stdin: true
-      description: Restoring App configs using mackup
     - command: source $HOME/.zshrc
       stdout: true
       stdin: true
@@ -50,3 +46,9 @@
 
 - brewfile:
     - config/brew/brewfile
+
+- shell:
+    - command: mackup restore
+      stdout: true
+      stdin: true
+      description: Restoring App configs using mackup
