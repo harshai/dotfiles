@@ -27,9 +27,6 @@
       create: true
     ~/.ssh/config: config/ssh/config
 
-- brewfile:
-    - config/brew/brewfile
-
 - create:
     - ~/Developer
     - ~/Developer/patches
@@ -50,3 +47,6 @@
       stdout: true
       stdin: true
       description: Add brew to $PATH
+
+- brewfile:
+    - config/brew/brewfile
