@@ -35,7 +35,7 @@
     - ~/.nvm
 
 - shell:
-    - command: source $HOME/.zshrc
+    - command: source ~/.zshrc
       stdout: true
       stdin: true
       description: Source zshrc config to generate the .zsh_plugin file for static loading
