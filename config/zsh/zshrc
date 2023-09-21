@@ -5,7 +5,8 @@ done
 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source <(antidote init)
-antidote load < ~/.config/zsh/plugins.txt
+
+antidote load
 
 # Enable autocomplete
 autoload -Uz compinit
@@ -25,7 +26,6 @@ load_nvm () {
 
 export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/"
 
 load_nvm
-antidote load
