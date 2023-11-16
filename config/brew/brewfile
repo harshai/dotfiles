@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -15,6 +14,7 @@ brew "sqlite"
 
 # Utils
 brew "antidote"
+brew "bat"
 brew "diff-so-fancy"
 brew "exa"
 brew "fzf"
