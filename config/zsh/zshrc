@@ -3,7 +3,11 @@ for i in $HOME/.config/zsh/*.zsh; do;
     test -r "$i" && source "$i"
 done
 
+# Load 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source <(antidote init)
 
-antidote load
+antidote load ~/.zsh_plugins.txt
+
+
+eval "$(zoxide init zsh)"

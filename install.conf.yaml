@@ -32,13 +32,9 @@
     - ~/Developer/patches
     - ~/.vim/undo
     - ~/.zprofile
-    - ~/.nvm
+    - ~/.nvmc
 
 - shell:
-    - command: source ~/.zshrc
-      stdout: true
-      stdin: true
-      description: Source zshrc config to generate the .zsh_plugin file for static loading
     - command: echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile; eval "$(/opt/homebrew/bin/brew shellenv)";
       stdout: true
       stdin: true

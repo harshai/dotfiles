@@ -51,7 +51,6 @@ alias ldot='exa -ld .*'
 alias zshrc='$EDITOR ~/.zshrc'
 alias h='history'
 alias zsh_startup_time='/usr/bin/time zsh -i -c exit'
-alias cat='bat'
 
 
 
