@@ -1,5 +1,5 @@
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
+marlonrichert/zsh-autocomplete
 
 # Prompt
 mafredri/zsh-async
