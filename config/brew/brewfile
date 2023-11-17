@@ -13,7 +13,6 @@ brew "node"
 brew "sqlite"
 
 # Utils
-brew "antidote"
 brew "bat"
 brew "diff-so-fancy"
 brew "exa"

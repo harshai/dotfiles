@@ -3,11 +3,13 @@ for i in $HOME/.config/zsh/*.zsh; do;
     test -r "$i" && source "$i"
 done
 
-# Load 
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-source <(antidote init)
+# Source zstyles you might use with antidote.
+[[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
-antidote load ~/.zsh_plugins.txt
+# Clone antidote if necessary.
+[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 
-
-eval "$(zoxide init zsh)"
+# Create an amazing Zsh config using antidote plugins.
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+antidote load
