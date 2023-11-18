@@ -1,7 +1,8 @@
 # History
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=100000
-SAVEHIST=$HISTSIZE
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
+setopt HIST_SAVE_NO_DUPS     # Do not write a duplicate event to the history file.
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
@@ -11,7 +12,7 @@ setopt share_history # share history between different instances of the shell
 setopt  autocd autopushd pushdignoredups
 
 # Autocorrect
-setopt correct_all # autocorrect commands
+setopt correct # autocorrect commands
 setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
