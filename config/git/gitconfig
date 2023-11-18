@@ -15,6 +15,22 @@
     untrackedCache = true
     fsmonitor = true
 
+[merge]
+    ff = only
+    conflictstyle = diff3
+
+[status]
+    showUntrackedFiles = all    
+
+[diff]
+  tool = icdiff
+
+[difftool]
+  prompt = false
+
+[difftool "icdiff"]
+  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
 ; [commit]
 ;     gpgsign = true
 
@@ -48,6 +64,8 @@
 [alias]
     patch = !git --no-pager diff --no-color
     difff = !git --no-pager diff
+    prune = fetch --prune
+    stash-all = stash save --include-untracked
 
 [gpg]
     program = gpg2
