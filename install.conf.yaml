@@ -18,10 +18,6 @@
     ~/.config/nvim:
       path: config/nvim/
       create: true
-    ~/.vimrc: config/vim/init.vim
-    ~/.config/vim:
-      path: config/vim/
-      create: true
     ~/.mackup.cfg:
       path: config/mackup
       create: true
