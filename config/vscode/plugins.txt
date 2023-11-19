@@ -1,0 +1,8 @@
+denoland.vscode-deno
+eamodio.gitlens
+elmTooling.elm-ls-vscode
+hbenl.vscode-test-explorer
+jdinhlife.gruvbox
+streetsidesoftware.code-spell-checker
+unifiedjs.vscode-mdx
+zamerick.vscode-caddyfile-syntax

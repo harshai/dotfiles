@@ -1,0 +1,75 @@
+{
+    "editor.fontFamily": "Fira code, Menlo, Monaco, 'Courier New', monospace",
+    "customizeUI.font.monospace": "Fira code",
+    "customizeUI.moveStatusbar": true,
+    "customizeUI.titleBar": "frameless",
+    "editor.inlayHints.fontFamily": "Cascadia, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 15,
+    "yaml.schemas": {
+      "file:///Users/isriharsha/.vscode/extensions/atlassian.atlascode-3.0.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "redhat.telemetry.enabled": false,
+    "window.nativeFullScreen": false,
+    "window.restoreFullscreen": true,
+    "explorer.autoReveal": "focusNoScroll",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.preferredDarkColorTheme": "Gruvbox Dark (Medium)",
+    "extensions.ignoreRecommendations": true,
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "customizeUI.activityBar": "bottom",
+    "window.dialogStyle": "custom",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "window.autoDetectColorScheme": true,
+    "window.nativeTabs": true,
+    "workbench.preferredHighContrastColorTheme": "Gruvbox Dark (Hard)",
+    "workbench.preferredLightColorTheme": "Gruvbox Light (Soft)",
+    "customizeUI.activityBarHideSettings": true,
+    "editor.codeLensFontFamily": "Inconsolata",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "workbench.panel.defaultLocation": "right",
+    "workbench.editor.splitSizing": "split",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.copyOnSelection": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.scale": 2,
+    "files.autoSave": "onFocusChange",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "atlascode.jira.jqlList": [
+      {
+        "id": "44ab6cfa-b876-4869-8050-5d258864d030",
+        "enabled": true,
+        "name": "My product-fabric Issues",
+        "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+        "siteId": "DUMMY-158c8204-ff3b-47c2-adbb-a0906ccc722b",
+        "monitor": true
+      }
+    ],
+    "atlascode.jira.lastCreateSiteAndProject": {
+      "siteId": "DUMMY-158c8204-ff3b-47c2-adbb-a0906ccc722b",
+      "projectKey": "DSP"
+    },
+    "atlascode.bitbucket.pipelines.monitorEnabled": false,
+    "atlascode.bitbucket.enabled": false,
+    "atlascode.jira.enabled": false,
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "terminal.integrated.tabs.enabled": false,
+    "elmLS.trace.server": "messages",
+    "editor.formatOnSave": true,
+    "[elm]": {
+      "editor.defaultFormatter": "elmTooling.elm-ls-vscode"
+    },
+    "git.autofetch": true,
+    "gitlens.showWelcomeOnInstall": false,
+    "editor.minimap.autohide": true,
+    "typescript.tsserver.log": "off",
+    "workbench.activityBar.location": "hidden"
+  }
