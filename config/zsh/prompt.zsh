@@ -1,5 +1,6 @@
 PURE_CMD_MAX_EXEC_TIME=0
 
+zstyle :prompt:pure:git:stash show yes
 
 # colors
 # zstyle :prompt:pure:path color red
