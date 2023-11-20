@@ -49,9 +49,13 @@
 - shell: 
   - command: chmod +x config/vscode/update_extensions_list.sh
   - command: chmod +x config/vscode/install_extensions.sh
+  - stdout: true
+  - stdin: true
   - description: Make script files executable
 - link:
-    ~/Library/Application\ Support/Code/User/settings.json: config/vscode/settings.json
-    ~/Library/Application\ Support/Code/User/keybindings.json: config/vscode/keybindings.json
+    ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: config/vscode/keybindings.json
 - shell:
   - command: config/vscode/install_extensions.sh
+    stdin: true
+    stdout: true
