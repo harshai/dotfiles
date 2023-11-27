@@ -13,3 +13,4 @@ done
 # Create an amazing Zsh config using antidote plugins.
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
+[[ -e ~/.afm-git-configrc ]] && source ~/.afm-git-configrc

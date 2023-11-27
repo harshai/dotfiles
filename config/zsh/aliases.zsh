@@ -1,6 +1,7 @@
 # -------------------------------------------------------------------
 # Git
 # -------------------------------------------------------------------
+alias pull="git pull origin $(git rev-parse --abbrev-ref HEAD)" # Pull changes for current branch only.
 alias ga='git add'
 alias gp='git push'
 alias glr='git log'
@@ -15,7 +16,7 @@ alias gco='git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias gpu='git pull'
-alias gpr='git pull --rebase'
+alias gpr='git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase'
 alias gpom='git pull origin master'
 alias gcl='git clone'
 alias gf='git reflog'
