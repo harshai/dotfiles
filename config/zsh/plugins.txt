@@ -1,12 +1,26 @@
+# -------------------------------------------------------------------
+# Zsh Plugins (managed by Antidote)
+# -------------------------------------------------------------------
+
+# Completions - must load before compinit
+zsh-users/zsh-completions kind:fpath
+
+# Autosuggestions - fish-like suggestions
 zsh-users/zsh-autosuggestions
-marlonrichert/zsh-autocomplete
+
+# Syntax highlighting - must be loaded after all widgets
+zsh-users/zsh-syntax-highlighting
+
+# History substring search (better than zsh-autocomplete, less buggy)
+zsh-users/zsh-history-substring-search
 
 # Prompt
 mafredri/zsh-async
 sindresorhus/pure
 
-# git-extras
+# Git extras - additional git commands
 unixorn/git-extra-commands
 
-# fast directory traversal
-ajeetdsouza/zoxide
+# Fast directory traversal (zoxide)
+# Note: zoxide init is handled in zshrc, this just ensures it's available
+# ajeetdsouza/zoxide

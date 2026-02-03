@@ -1,15 +1,93 @@
-  Host github.com
-  	HostName github.com
-  	User git
-  	IdentityFile ~/.ssh/id_rsa
-  	IdentitiesOnly=yes
-  Host bitbucket.org
-  	Hostname bitbucket.org
-  	User git
-  	IdentityFile ~/.ssh/isriharsha_rsa
-  	IdentitiesOnly=yes
-  Host stash.atlassian.com
-  	Hostname stash.atlassian.com
-  	User git
-  	IdentityFile ~/.ssh/isriharsha_rsa
-  	IdentitiesOnly=yes
+# -------------------------------------------------------------------
+# SSH Config - Cross-platform (macOS & Linux)
+# -------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# Global Defaults
+# -------------------------------------------------------------------
+Host *
+    # Security
+    IdentitiesOnly yes
+    HashKnownHosts yes
+    
+    # Connection persistence (multiplexing)
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 600
+    
+    # Keep connections alive
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    
+    # Compression for slow connections
+    Compression yes
+    
+    # Faster authentication
+    AddKeysToAgent yes
+
+# macOS-specific: Use Keychain for SSH keys
+# This is ignored on Linux
+Match host * exec "test $(uname) = Darwin"
+    UseKeychain yes
+    IgnoreUnknown UseKeychain
+
+# -------------------------------------------------------------------
+# Git Hosts
+# -------------------------------------------------------------------
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    # Prefer ed25519, fallback to rsa
+    IdentityFile ~/.ssh/id_rsa
+
+Host bitbucket.org
+    HostName bitbucket.org
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host stash.atlassian.com
+    HostName stash.atlassian.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+# Atlassian Bitbucket Cloud (personal)
+Host bitbucket.org-personal
+    HostName bitbucket.org
+    User git
+    IdentityFile ~/.ssh/isriharsha_rsa
+    IdentitiesOnly yes
+
+# -------------------------------------------------------------------
+# Example Host Templates
+# -------------------------------------------------------------------
+
+# Example: Jump/Bastion host
+# Host bastion
+#     HostName bastion.example.com
+#     User admin
+#     IdentityFile ~/.ssh/bastion_key
+#     ForwardAgent yes
+
+# Example: Host behind bastion
+# Host internal-server
+#     HostName 10.0.0.5
+#     User deploy
+#     ProxyJump bastion
+
+# Example: Port forwarding
+# Host db-tunnel
+#     HostName db.example.com
+#     User tunnel
+#     LocalForward 5432 localhost:5432
+#     IdentityFile ~/.ssh/tunnel_key
+
+# -------------------------------------------------------------------
+# Local overrides (not tracked in git)
+# -------------------------------------------------------------------
+Include ~/.ssh/config.local

@@ -1,71 +1,122 @@
-tap "homebrew/cask-fonts"
-tap "homebrew/cask"
-tap "homebrew/core"
+# -------------------------------------------------------------------
+# Homebrew Bundle - Brewfile
+# Install with: brew bundle --file=path/to/brewfile
+# -------------------------------------------------------------------
+
+# Note: homebrew/core, homebrew/cask are now default (no need to tap)
 tap "homebrew/services"
-tap "neovim/neovim"
 
-# Languages
-brew "deno"
-brew "elm"
-brew "node"
+# -------------------------------------------------------------------
+# Languages & Runtimes
+# -------------------------------------------------------------------
+brew "deno"                   # JavaScript/TypeScript runtime
+brew "fnm"                    # Fast Node Manager (optional, faster alternative)
+brew "nvm"                    # Node Version Manager (required for AFM)
+# brew "node"                 # Node.js (managed by nvm/fnm instead)
 
+# -------------------------------------------------------------------
 # Databases
+# -------------------------------------------------------------------
 brew "sqlite"
 
-# Utils
-brew "bat"
-brew "diff-so-fancy"
-brew "exa"
-brew "fzf"
-brew "git-extras"
-brew "git-lfs"
+# -------------------------------------------------------------------
+# Version Control
+# -------------------------------------------------------------------
 brew "git"
-brew "hub"
-brew "icdiff"
-brew "mackup"
-brew "mas"
-brew "nvm"
-brew "the_silver_searcher"
-brew "tig"
-brew "tldr"
-brew "tree"
-brew "yarn"
+brew "git-extras"             # Additional git commands
+brew "git-lfs"                # Large file storage
+brew "gh"                     # GitHub CLI
+brew "hub"                    # GitHub CLI (legacy, gh is preferred)
+brew "tig"                    # Text-mode interface for Git
+brew "diff-so-fancy"          # Better git diffs
+
+# -------------------------------------------------------------------
+# Shell & Terminal
+# -------------------------------------------------------------------
 brew "zsh"
+brew "zsh-completions"        # Additional zsh completions
+brew "starship"               # Cross-shell prompt (optional alternative to pure)
 
-# Fonts
-cask "font-fantasque-sans-mono"
-cask "font-fira-code-nerd-font"
-cask "font-fira-code"
-cask "font-inconsolata"
-cask "font-mononoki-nerd-font"
-cask "font-mononoki"
+# -------------------------------------------------------------------
+# File & Text Utils
+# -------------------------------------------------------------------
+brew "bat"                    # cat with syntax highlighting
+brew "eza"                    # Modern replacement for ls (replaces exa)
+brew "fd"                     # Fast alternative to find
+brew "fzf"                    # Fuzzy finder
+brew "ripgrep"                # Fast grep replacement (rg)
+brew "the_silver_searcher"    # ag - code searching tool
+brew "tree"                   # Directory tree
+brew "jq"                     # JSON processor
+brew "yq"                     # YAML processor
+brew "sd"                     # Intuitive find & replace (sed alternative)
 
-# Applications
-brew "wireguard-tools"
+# -------------------------------------------------------------------
+# System Utils
+# -------------------------------------------------------------------
+brew "htop"                   # Interactive process viewer
+brew "tldr"                   # Simplified man pages
+brew "watch"                  # Execute command periodically
+brew "wget"                   # File downloader
+brew "curl"                   # URL transfer tool
+brew "coreutils"              # GNU core utilities
+brew "moreutils"              # Additional Unix utilities
+
+# -------------------------------------------------------------------
+# Development Tools
+# -------------------------------------------------------------------
+brew "icdiff"                 # Improved colored diff
+brew "shellcheck"             # Shell script linter
+brew "shfmt"                  # Shell script formatter
+
+# -------------------------------------------------------------------
+# Application Config
+# -------------------------------------------------------------------
+brew "mackup"                 # Backup application settings
+
+# -------------------------------------------------------------------
+# Editors
+# -------------------------------------------------------------------
 brew "neovim"
 brew "vim"
-cask "bettertouchtool"
-cask "bitwarden"
-cask "docker"
-cask "dozer"
+
+# -------------------------------------------------------------------
+# Fonts (via Homebrew Cask)
+# -------------------------------------------------------------------
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-meslo-lg-nerd-font"
+cask "font-fantasque-sans-mono"
+cask "font-inconsolata"
+cask "font-mononoki"
+cask "font-mononoki-nerd-font"
+
+# -------------------------------------------------------------------
+# Applications
+# -------------------------------------------------------------------
+cask "iterm2"                 # Terminal emulator
+cask "visual-studio-code"     # Code editor
+cask "docker"                 # Containers
+cask "rectangle"              # Window manager (replaces spectacle)
+# cask "spectacle"            # Deprecated, use rectangle instead
+cask "raycast"                # Productivity launcher (spotlight replacement)
+
+# Browsers
 cask "firefox"
 cask "google-chrome"
-cask "istat-menus"
-cask "iterm2"
-cask "keka"
-cask "little-snitch"
-cask "micro-snitch"
-cask "mullvadvpn"
-cask "obsidian"
-cask "spectacle"
-cask "telegram"
-cask "visual-studio-code"
 
-mas "Affinity Photo", id: 824183456
-mas "Amphetamine", id: 937984704
-mas "DxOOpticsProForPhotos", id: 1056077392
-mas "External Editors For Photos", id: 1074021862
-mas "Flycut", id: 442160987
-mas "GIPHY CAPTURE", id: 668208984
-mas "Pocket", id: 568494494
+# Utilities
+cask "bettertouchtool"        # Keyboard/mouse/trackpad customization
+cask "bitwarden"              # Password manager
+cask "keka"                   # File archiver
+cask "istat-menus"            # System monitor
 
+# -------------------------------------------------------------------
+# Mac App Store (requires `mas` CLI)
+# -------------------------------------------------------------------
+# Install mas first: brew install mas
+# brew "mas"
+# mas "Flycut", id: 442160987
+# mas "GIPHY CAPTURE", id: 668208984

@@ -3,59 +3,147 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
-- link:
-    ~/.gitconfig: config/git/gitconfig
-    ~/.gitignore_global: config/git/gitignore_global
-    ~/.zshrc: config/zsh/zshrc
-    ~/.zsh_plugins.txt: config/zsh/plugins.txt
-    ~/.config/zsh:
-      path: config/zsh/
-      create: true
-    ~/.config/nvim:
-      path: config/nvim/
-      create: true
-    ~/.mackup.cfg:
-      path: config/mackup
-      create: true
-    ~/.ssh/config: config/ssh/config
-
+# Create necessary directories
 - create:
     - ~/Developer
     - ~/Developer/patches
+    - ~/bin
     - ~/.vim/undo
-    - ~/.zprofile
-    - ~/.nvmc
+    - ~/.config/nvim/undo
+    - ~/.nvm
+    - ~/.ssh
+    - ~/.ssh/sockets
 
-- shell:
-    - command: echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile; eval "$(/opt/homebrew/bin/brew shellenv)";
-      stdout: true
-      stdin: true
-      description: Add brew to $PATH
-
-- brewfile:
-    - config/brew/brewfile
-
-- shell:
-    - command: mackup restore
-      stdout: true
-      stdin: true
-      description: Restoring App configs using mackup
-
-## Setup VSCode
-- shell: 
-  - command: chmod +x config/vscode/update_extensions_list.sh
-  - command: chmod +x config/vscode/install_extensions.sh
-  - stdout: true
-  - stdin: true
-  - description: Make script files executable
+# Core symlinks (OS-agnostic)
 - link:
-    ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: config/vscode/keybindings.json
+    ~/.gitconfig: config/git/gitconfig
+    ~/.gitignore_global: config/git/gitignore_global
+    ~/.editorconfig: config/editorconfig
+    ~/.zshrc: config/zsh/zshrc
+    ~/.zsh_plugins.txt: config/zsh/plugins.txt
+    ~/.config/zsh: config/zsh/
+    ~/.config/nvim: config/nvim/
+    ~/.ssh/config: config/ssh/config
+
+# macOS-specific setup
 - shell:
-  - command: config/vscode/install_extensions.sh
-    stdin: true
-    stdout: true
+    - command: |
+        if [[ "$(uname)" == "Darwin" ]]; then
+          # Detect brew path (Apple Silicon vs Intel)
+          if [[ -f "/opt/homebrew/bin/brew" ]]; then
+            BREW_PATH="/opt/homebrew/bin/brew"
+          elif [[ -f "/usr/local/bin/brew" ]]; then
+            BREW_PATH="/usr/local/bin/brew"
+          else
+            echo "Homebrew not found. Please install it first: https://brew.sh"
+            exit 0
+          fi
+          
+          # Add brew to zprofile if not already there
+          if ! grep -q 'brew shellenv' ~/.zprofile 2>/dev/null; then
+            echo "eval \"\$(${BREW_PATH} shellenv)\"" >> ~/.zprofile
+          fi
+          eval "$(${BREW_PATH} shellenv)"
+          echo "✓ Homebrew configured"
+        else
+          echo "⊘ Skipping Homebrew setup (not macOS)"
+        fi
+      stdout: true
+      description: Configure Homebrew PATH (macOS only)
+
+# Install packages via Homebrew (macOS only)
+- shell:
+    - command: |
+        if [[ "$(uname)" == "Darwin" ]] && command -v brew &> /dev/null; then
+          echo "Installing packages from Brewfile..."
+          brew bundle --file=config/brew/brewfile
+        else
+          echo "⊘ Skipping Brewfile (not macOS or brew not available)"
+        fi
+      stdout: true
+      stdin: true
+      description: Install Homebrew packages (macOS only)
+
+# Linux-specific setup (for RDEs)
+- shell:
+    - command: |
+        if [[ "$(uname)" == "Linux" ]]; then
+          echo "Setting up Linux environment..."
+          
+          # Install fnm if not present
+          if ! command -v fnm &> /dev/null; then
+            echo "Installing fnm..."
+            curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+          fi
+          
+          # Install eza if not present (for ls aliases)
+          if ! command -v eza &> /dev/null && command -v cargo &> /dev/null; then
+            echo "Installing eza via cargo..."
+            cargo install eza
+          fi
+          
+          echo "✓ Linux setup complete"
+        else
+          echo "⊘ Skipping Linux setup (not Linux)"
+        fi
+      stdout: true
+      description: Linux-specific setup (RDE)
+
+# Mackup restore (macOS only)
+- shell:
+    - command: |
+        if [[ "$(uname)" == "Darwin" ]] && command -v mackup &> /dev/null; then
+          # Link mackup config first
+          ln -sf "$(pwd)/config/mackup" ~/.mackup.cfg
+          mackup restore -f
+          echo "✓ Mackup restore complete"
+        else
+          echo "⊘ Skipping Mackup (not macOS or mackup not installed)"
+        fi
+      stdout: true
+      stdin: true
+      description: Restore App configs using Mackup (macOS only)
+
+# VSCode setup (cross-platform)
+- shell:
+    - command: chmod +x config/vscode/update_extensions_list.sh config/vscode/install_extensions.sh
+      description: Make VSCode scripts executable
+
+- shell:
+    - command: |
+        # Determine VSCode settings path based on OS
+        if [[ "$(uname)" == "Darwin" ]]; then
+          VSCODE_PATH="$HOME/Library/Application Support/Code/User"
+        elif [[ "$(uname)" == "Linux" ]]; then
+          VSCODE_PATH="$HOME/.config/Code/User"
+        else
+          echo "⊘ Unsupported OS for VSCode setup"
+          exit 0
+        fi
+        
+        # Create directory if it doesn't exist
+        mkdir -p "$VSCODE_PATH"
+        
+        # Symlink settings
+        ln -sf "$(pwd)/config/vscode/settings.json" "$VSCODE_PATH/settings.json"
+        ln -sf "$(pwd)/config/vscode/keybindings.json" "$VSCODE_PATH/keybindings.json"
+        
+        echo "✓ VSCode settings linked to $VSCODE_PATH"
+      stdout: true
+      description: Link VSCode settings (cross-platform)
+
+- shell:
+    - command: |
+        if command -v code &> /dev/null; then
+          config/vscode/install_extensions.sh
+        else
+          echo "⊘ VSCode not found, skipping extension install"
+        fi
+      stdout: true
+      stdin: true
+      description: Install VSCode extensions
