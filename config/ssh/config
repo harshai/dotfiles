@@ -1,3 +1,7 @@
+Include devbox.conf/*.conf
+
+Include dev_env_config
+
 # -------------------------------------------------------------------
 # SSH Config - Cross-platform (macOS & Linux)
 # -------------------------------------------------------------------
@@ -6,9 +10,16 @@
 # Global Defaults
 # -------------------------------------------------------------------
 Host *
+    # Ignore unknown options (for cross-platform compatibility)
+    IgnoreUnknown UseKeychain,AddKeysToAgent
+    
     # Security
     IdentitiesOnly yes
     HashKnownHosts yes
+    
+    # macOS Keychain integration (ignored on Linux)
+    UseKeychain yes
+    AddKeysToAgent yes
     
     # Connection persistence (multiplexing)
     ControlMaster auto
@@ -21,15 +32,6 @@ Host *
     
     # Compression for slow connections
     Compression yes
-    
-    # Faster authentication
-    AddKeysToAgent yes
-
-# macOS-specific: Use Keychain for SSH keys
-# This is ignored on Linux
-Match host * exec "test $(uname) = Darwin"
-    UseKeychain yes
-    IgnoreUnknown UseKeychain
 
 # -------------------------------------------------------------------
 # Git Hosts
@@ -38,9 +40,8 @@ Host github.com
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_ed25519
-    IdentitiesOnly yes
-    # Prefer ed25519, fallback to rsa
     IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
 
 Host bitbucket.org
     HostName bitbucket.org

@@ -5,13 +5,17 @@
     smudge = git-lfs smudge -- %f
 
 [push]
-    default = simple
+    default = current
     autoSetupRemote = true
 
+[pull]
+    rebase = true
+
 [core]
+    editor = nvim
     excludesfile = ~/.gitignore_global
     pager = diff-so-fancy | less --tabs=4 -RFX
-	compression = 0
+    compression = 0
     untrackedCache = true
     fsmonitor = true
 
@@ -20,7 +24,7 @@
     conflictstyle = diff3
 
 [status]
-    showUntrackedFiles = all    
+    showUntrackedFiles = all
 
 [diff]
   tool = icdiff
