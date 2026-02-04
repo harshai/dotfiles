@@ -6,9 +6,10 @@
 # zmodload zsh/zprof
 
 # -------------------------------------------------------------------
-# Load zsh configuration files
+# Load zsh configuration files (if available)
 # -------------------------------------------------------------------
-# Load order matters: config.zsh sets up OS detection used by other files
+# On macOS/local: loads from ~/.config/zsh/
+# On RDE: these may not exist, so we check first
 for config_file in \
   "$HOME/.config/zsh/config.zsh" \
   "$HOME/.config/zsh/aliases.zsh" \
@@ -20,6 +21,16 @@ do
   [[ -r "$config_file" ]] && source "$config_file"
 done
 unset config_file
+
+# -------------------------------------------------------------------
+# OS Detection (fallback if config.zsh not loaded)
+# -------------------------------------------------------------------
+if [[ -z "$IS_MACOS" ]]; then
+  export IS_MACOS=false
+  export IS_LINUX=false
+  [[ "$(uname)" == "Darwin" ]] && export IS_MACOS=true
+  [[ "$(uname)" == "Linux" ]] && export IS_LINUX=true
+fi
 
 # -------------------------------------------------------------------
 # Plugin Manager (Antidote)
@@ -38,8 +49,32 @@ fi
 # Source antidote
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
-# Load plugins from ~/.zsh_plugins.txt
-antidote load
+# -------------------------------------------------------------------
+# Plugins (defined inline for RDE compatibility)
+# -------------------------------------------------------------------
+# If plugins file exists, use it; otherwise define plugins inline
+if [[ -e ${ZDOTDIR:-~}/.zsh_plugins.txt ]]; then
+  antidote load
+else
+  # Define plugins inline (RDE doesn't upload .zsh_plugins.txt)
+  antidote bundle <<PLUGINS
+# Completions - must load before compinit
+zsh-users/zsh-completions kind:fpath
+
+# Autosuggestions - fish-like suggestions
+zsh-users/zsh-autosuggestions
+
+# Syntax highlighting - must be loaded after all widgets
+zsh-users/zsh-syntax-highlighting
+
+# History substring search
+zsh-users/zsh-history-substring-search
+
+# Prompt
+mafredri/zsh-async
+sindresorhus/pure
+PLUGINS
+fi
 
 # -------------------------------------------------------------------
 # FZF Integration
@@ -86,6 +121,43 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # -------------------------------------------------------------------
+# Minimal aliases (fallback if aliases.zsh not loaded)
+# -------------------------------------------------------------------
+if ! alias gs &>/dev/null; then
+  # Git
+  alias g='git'
+  alias gs='git status'
+  alias ga='git add'
+  alias gc='git checkout'
+  alias gco='git checkout'
+  alias gp='git push'
+  alias gpu='git pull'
+  alias gd='git diff'
+  alias gl='git log --oneline --graph'
+  
+  # Editors
+  alias vim='nvim'
+  alias vi='nvim'
+  
+  # Files
+  if command -v eza &> /dev/null; then
+    alias ls='eza'
+    alias l='eza -lFh'
+    alias la='eza -laFh'
+    alias ll='eza -l'
+  elif command -v exa &> /dev/null; then
+    alias ls='exa'
+    alias l='exa -lFh'
+    alias la='exa -laFh'
+    alias ll='exa -l'
+  fi
+  
+  # Navigation
+  alias ..='cd ..'
+  alias ...='cd ../..'
+fi
+
+# -------------------------------------------------------------------
 # Local Configuration
 # -------------------------------------------------------------------
 # Load local config (not tracked in git)
@@ -119,6 +191,19 @@ zstyle ':completion:*' menu select
 # Group completions by category
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+
+# -------------------------------------------------------------------
+# History (fallback if config.zsh not loaded)
+# -------------------------------------------------------------------
+if [[ -z "$HISTFILE" ]]; then
+  export HISTFILE="$HOME/.zsh_history"
+  export HISTSIZE=100000
+  export SAVEHIST=$HISTSIZE
+  setopt HIST_IGNORE_ALL_DUPS
+  setopt HIST_REDUCE_BLANKS
+  setopt INC_APPEND_HISTORY
+  setopt SHARE_HISTORY
+fi
 
 # Performance: uncomment to see startup time
 # zprof
