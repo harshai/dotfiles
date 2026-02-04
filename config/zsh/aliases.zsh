@@ -54,7 +54,6 @@ fi
 # -------------------------------------------------------------------
 # Editors
 # -------------------------------------------------------------------
-alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias vim8='\vim'  # Escape to original vim if needed
