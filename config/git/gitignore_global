@@ -294,3 +294,5 @@ build/
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
+
+agentic-implementation-notes/
