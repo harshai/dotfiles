@@ -1,113 +1,123 @@
 #!/bin/bash
 # -------------------------------------------------------------------
 # DevBox/RDE Dotfiles Setup Script
-# This script runs automatically when a DevBox starts
+# Runs automatically when DevBox starts
 # -------------------------------------------------------------------
 
-set -e  # Exit on error
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
-DOTFILES_DIR="$HOME/dotfiles"
-echo "🚀 Setting up dotfiles from $DOTFILES_DIR"
-
-# -------------------------------------------------------------------
-# Symlink dotfiles
-# -------------------------------------------------------------------
-
-# Zsh
-ln -sf "$DOTFILES_DIR/config/zsh/zshrc" ~/.zshrc
-ln -sf "$DOTFILES_DIR/config/zsh/plugins.txt" ~/.zsh_plugins.txt
-mkdir -p ~/.config
-ln -sf "$DOTFILES_DIR/config/zsh" ~/.config/zsh
-
-# Git
-ln -sf "$DOTFILES_DIR/config/git/gitconfig" ~/.gitconfig
-ln -sf "$DOTFILES_DIR/config/git/gitignore_global" ~/.gitignore_global
-
-# Neovim
-mkdir -p ~/.config/nvim
-ln -sf "$DOTFILES_DIR/config/nvim/init.vim" ~/.config/nvim/init.vim
-# Symlink entire nvim config directory
-ln -sf "$DOTFILES_DIR/config/nvim" ~/.config/nvim
-
-# SSH (copy, don't symlink for security)
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-cp "$DOTFILES_DIR/config/ssh/config" ~/.ssh/config
-chmod 600 ~/.ssh/config
-mkdir -p ~/.ssh/sockets
-
-# EditorConfig
-ln -sf "$DOTFILES_DIR/config/editorconfig" ~/.editorconfig
+echo "🚀 Setting up custom dotfiles from $DOTFILES_DIR"
 
 # -------------------------------------------------------------------
-# Create directories
+# Helper function to safely link/copy files
 # -------------------------------------------------------------------
-mkdir -p ~/Developer
-mkdir -p ~/Developer/patches
-mkdir -p ~/bin
-mkdir -p ~/.vim/undo
-mkdir -p ~/.config/nvim/undo
-mkdir -p ~/.nvm
-mkdir -p ~/.local/share/zsh  # For zsh history
+safe_link() {
+  local src="$1"
+  local dest="$2"
+  
+  if [[ -e "$src" ]]; then
+    mkdir -p "$(dirname "$dest")"
+    rm -rf "$dest"
+    ln -sf "$src" "$dest"
+    echo "  ✓ Linked $dest"
+  fi
+}
 
 # -------------------------------------------------------------------
-# Install fnm (Fast Node Manager) if not present
+# Zsh Configuration
 # -------------------------------------------------------------------
-if ! command -v fnm &> /dev/null; then
-  echo "📦 Installing fnm..."
-  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-  export PATH="$HOME/.local/share/fnm:$PATH"
+echo "Setting up Zsh..."
+safe_link "$DOTFILES_DIR/config/zsh/zshrc" "$HOME/.zshrc"
+safe_link "$DOTFILES_DIR/config/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
+mkdir -p "$HOME/.config"
+safe_link "$DOTFILES_DIR/config/zsh" "$HOME/.config/zsh"
+
+# Create zsh history directory
+mkdir -p "$HOME/.local/share/zsh"
+
+# -------------------------------------------------------------------
+# Git Configuration
+# -------------------------------------------------------------------
+echo "Setting up Git..."
+safe_link "$DOTFILES_DIR/config/git/gitconfig" "$HOME/.gitconfig"
+safe_link "$DOTFILES_DIR/config/git/gitignore_global" "$HOME/.gitignore_global"
+
+# -------------------------------------------------------------------
+# Neovim Configuration
+# -------------------------------------------------------------------
+echo "Setting up Neovim..."
+mkdir -p "$HOME/.config/nvim/undo"
+safe_link "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
+
+# -------------------------------------------------------------------
+# SSH Configuration (copy for security, don't symlink)
+# -------------------------------------------------------------------
+echo "Setting up SSH..."
+mkdir -p "$HOME/.ssh/sockets"
+chmod 700 "$HOME/.ssh"
+if [[ -f "$DOTFILES_DIR/config/ssh/config" ]]; then
+  cp "$DOTFILES_DIR/config/ssh/config" "$HOME/.ssh/config"
+  chmod 600 "$HOME/.ssh/config"
+  echo "  ✓ Copied SSH config"
 fi
+
+# -------------------------------------------------------------------
+# EditorConfig
+# -------------------------------------------------------------------
+echo "Setting up EditorConfig..."
+safe_link "$DOTFILES_DIR/config/editorconfig" "$HOME/.editorconfig"
+
+# -------------------------------------------------------------------
+# VSCode Settings (for web IDE)
+# -------------------------------------------------------------------
+echo "Setting up VSCode..."
+VSCODE_PATH="$HOME/.config/Code/User"
+mkdir -p "$VSCODE_PATH"
+safe_link "$DOTFILES_DIR/config/vscode/settings.json" "$VSCODE_PATH/settings.json"
+safe_link "$DOTFILES_DIR/config/vscode/keybindings.json" "$VSCODE_PATH/keybindings.json"
+
+# -------------------------------------------------------------------
+# Create useful directories
+# -------------------------------------------------------------------
+mkdir -p "$HOME/Developer"
+mkdir -p "$HOME/bin"
+mkdir -p "$HOME/.vim/undo"
+mkdir -p "$HOME/.nvm"
 
 # -------------------------------------------------------------------
 # Install Antidote (zsh plugin manager) if not present
 # -------------------------------------------------------------------
 if [[ ! -d "$HOME/.antidote" ]]; then
-  echo "📦 Installing antidote..."
-  git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+  echo "📦 Installing antidote (zsh plugin manager)..."
+  git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
 fi
 
 # -------------------------------------------------------------------
-# Install eza (modern ls) if not present and cargo is available
+# Install fnm (Fast Node Manager) if not present
 # -------------------------------------------------------------------
-if ! command -v eza &> /dev/null; then
-  if command -v cargo &> /dev/null; then
-    echo "📦 Installing eza..."
-    cargo install eza
-  else
-    echo "⚠️  Cargo not found, skipping eza installation"
-  fi
+if ! command -v fnm &> /dev/null; then
+  echo "📦 Installing fnm (Fast Node Manager)..."
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 fi
 
 # -------------------------------------------------------------------
-# VSCode settings (for web IDE)
+# Local overrides
 # -------------------------------------------------------------------
-VSCODE_PATH="$HOME/.config/Code/User"
-if [[ -d "$HOME/.config/Code" ]] || [[ -d "$HOME/.vscode-server" ]]; then
-  mkdir -p "$VSCODE_PATH"
-  ln -sf "$DOTFILES_DIR/config/vscode/settings.json" "$VSCODE_PATH/settings.json"
-  ln -sf "$DOTFILES_DIR/config/vscode/keybindings.json" "$VSCODE_PATH/keybindings.json"
-  echo "✓ VSCode settings linked"
-fi
-
-# -------------------------------------------------------------------
-# Local overrides (optional)
-# -------------------------------------------------------------------
-# Create empty local config files if they don't exist
-touch ~/.zshrc.local 2>/dev/null || true
-touch ~/.gitconfig_local 2>/dev/null || true
+touch "$HOME/.zshrc.local" 2>/dev/null || true
+touch "$HOME/.gitconfig_local" 2>/dev/null || true
 
 # -------------------------------------------------------------------
 # Done!
 # -------------------------------------------------------------------
-echo "✅ Dotfiles setup complete!"
+echo ""
+echo "✅ Custom dotfiles setup complete!"
 echo ""
 echo "Installed:"
-echo "  • Zsh config with aliases and functions"
-echo "  • Git config with nvim as editor"
+echo "  • Zsh config with plugins, aliases, and functions"
+echo "  • Git config (nvim editor, rebase on pull)"
 echo "  • Neovim config"
 echo "  • EditorConfig"
-echo "  • SSH config"
+echo "  • SSH config with multiplexing"
 echo "  • fnm for Node version management"
 echo ""
-echo "Run 'source ~/.zshrc' to reload your shell."
+echo "Run 'exec zsh' to reload your shell."
