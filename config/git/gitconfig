@@ -12,12 +12,14 @@
     rebase = true
 
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore_global
-    pager = diff-so-fancy | less --tabs=4 -RFX
     compression = 0
     untrackedCache = true
-    fsmonitor = true
+    # Pager: uses less with colors, works everywhere
+    pager = less -RFX
+    # Note: fsmonitor can cause issues on some systems, enable if needed
+    # fsmonitor = true
 
 [merge]
     ff = only
@@ -27,13 +29,14 @@
     showUntrackedFiles = all
 
 [diff]
-  tool = icdiff
+    tool = vimdiff
+    colorMoved = default
 
 [difftool]
-  prompt = false
+    prompt = false
 
-[difftool "icdiff"]
-  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+[difftool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
 
 ; [commit]
 ;     gpgsign = true
