@@ -50,15 +50,35 @@ mkdir -p "$HOME/.config/nvim/undo"
 safe_link "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
 
 # -------------------------------------------------------------------
-# SSH Configuration (copy for security, don't symlink)
+# SSH Configuration
+# IMPORTANT: Don't overwrite RDE's SSH config - it has injected keys!
+# Instead, we use Include to add our config
 # -------------------------------------------------------------------
 echo "Setting up SSH..."
 mkdir -p "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh"
+
+# Copy our SSH config as a separate file
 if [[ -f "$DOTFILES_DIR/config/ssh/config" ]]; then
-  cp "$DOTFILES_DIR/config/ssh/config" "$HOME/.ssh/config"
+  cp "$DOTFILES_DIR/config/ssh/config" "$HOME/.ssh/config.dotfiles"
+  chmod 600 "$HOME/.ssh/config.dotfiles"
+  
+  # Add Include directive to existing config if not already there
+  if [[ -f "$HOME/.ssh/config" ]]; then
+    if ! grep -q "Include.*config.dotfiles" "$HOME/.ssh/config" 2>/dev/null; then
+      # Prepend our include to existing config (after any existing Includes)
+      echo "  Adding Include directive to existing SSH config..."
+      # Create temp file with our include added after other includes
+      sed -i '/^Include/!b;:a;n;/^Include/ba;i\Include config.dotfiles' "$HOME/.ssh/config" 2>/dev/null || \
+        echo -e "Include config.dotfiles\n$(cat $HOME/.ssh/config)" > "$HOME/.ssh/config.tmp" && mv "$HOME/.ssh/config.tmp" "$HOME/.ssh/config"
+    fi
+    echo "  ✓ SSH config.dotfiles installed (included from main config)"
+  else
+    # No existing config, just use ours
+    cp "$DOTFILES_DIR/config/ssh/config" "$HOME/.ssh/config"
+    echo "  ✓ Copied SSH config"
+  fi
   chmod 600 "$HOME/.ssh/config"
-  echo "  ✓ Copied SSH config"
 fi
 
 # -------------------------------------------------------------------

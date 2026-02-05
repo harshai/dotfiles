@@ -1,11 +1,12 @@
 Include devbox.conf/*.conf
 
 Include dev_env_config
-Include service_port_forward_config
 
 # -------------------------------------------------------------------
 # SSH Config - Cross-platform (macOS & Linux)
 # -------------------------------------------------------------------
+# On RDE: This file is included as ~/.ssh/config.dotfiles
+# On macOS: This file is symlinked as ~/.ssh/config
 
 # -------------------------------------------------------------------
 # Global Defaults
@@ -15,7 +16,6 @@ Host *
     IgnoreUnknown UseKeychain,AddKeysToAgent
     
     # Security
-    IdentitiesOnly yes
     HashKnownHosts yes
     
     # macOS Keychain integration (ignored on Linux)
@@ -33,6 +33,9 @@ Host *
     
     # Compression for slow connections
     Compression yes
+    
+    # Note: IdentitiesOnly is set per-host below, not globally
+    # Global IdentitiesOnly can break RDE-injected keys
 
 # -------------------------------------------------------------------
 # Git Hosts
