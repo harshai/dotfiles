@@ -207,3 +207,4 @@ fi
 
 # Performance: uncomment to see startup time
 # zprof
+if [ -f "$HOME/.afm-bin-path-manager.zsh" ]; then source "$HOME/.afm-bin-path-manager.zsh"; fi

@@ -11,6 +11,19 @@
 [pull]
     rebase = true
 
+[rerere]
+    # Remember conflict resolutions and auto-apply them
+    enabled = true
+    autoUpdate = true
+
+[rebase]
+    # Auto-squash fixup! and squash! commits
+    autoSquash = true
+    # Stash changes before rebase, apply after
+    autoStash = true
+    # Show stat of what changed upstream
+    stat = true
+
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global

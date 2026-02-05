@@ -69,7 +69,7 @@
   },
   "git.autofetch": true,
   "gitlens.showWelcomeOnInstall": false,
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
   "typescript.tsserver.log": "off",
   "workbench.activityBar.location": "hidden",
   "dateTime.showDayOfWeek": true
