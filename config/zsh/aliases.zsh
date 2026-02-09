@@ -20,8 +20,11 @@ alias glr='git log'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpu='git pull'
-alias gpom='git pull origin main'
+alias gpom='git pull origin master'
+# Use --rebase flag when you explicitly want to rebase
 alias gpr='git pull --rebase'
+# Merge-based pull (default with our config)
+alias gpm='git pull --no-rebase'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias grs='git restore'

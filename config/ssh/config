@@ -1,6 +1,7 @@
 Include devbox.conf/*.conf
 
 Include dev_env_config
+Include service_port_forward_config
 
 # -------------------------------------------------------------------
 # SSH Config - Cross-platform (macOS & Linux)
