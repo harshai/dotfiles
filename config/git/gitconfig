@@ -19,7 +19,7 @@
     autoUpdate = true
 
 [core]
-    editor = nvim
+    editor = vim
     excludesfile = ~/.gitignore_global
     compression = 0
     untrackedCache = true
