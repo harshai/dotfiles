@@ -9,20 +9,20 @@
     autoSetupRemote = true
 
 [pull]
-    rebase = true
+    # Use merge (not rebase) when pulling - simpler conflict resolution
+    rebase = false
+    # Fast-forward if possible, otherwise create merge commit
+    ff = true
+
+[merge]
+    # Keep merge.ff = only from earlier config for explicit merges
+    # pull.ff = true allows merge commits when needed
 
 [rerere]
     # Remember conflict resolutions and auto-apply them
+    # Still useful even with merge workflow!
     enabled = true
     autoUpdate = true
-
-[rebase]
-    # Auto-squash fixup! and squash! commits
-    autoSquash = true
-    # Stash changes before rebase, apply after
-    autoStash = true
-    # Show stat of what changed upstream
-    stat = true
 
 [core]
     editor = nvim
