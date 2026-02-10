@@ -11,6 +11,8 @@
 [pull]
     # Use merge (not rebase) when pulling - simpler conflict resolution
     rebase = false
+    # Fast-forward only - fail if not possible (forces explicit decision)
+    ff = only
 
 [rerere]
     # Remember conflict resolutions and auto-apply them
@@ -89,5 +91,5 @@
     path = .gitconfig_local
 
 [user]
-	email = harsha.ivaturi@gmail.com
+	email = isriharsha@atlassian.com
     name = Harsha Ivaturi
